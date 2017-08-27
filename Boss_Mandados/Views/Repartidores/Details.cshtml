@@ -1,0 +1,58 @@
+﻿@model Boss_Mandados.Models.manboss_repartidores
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>manboss_repartidores</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.repartidor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.repartidor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.latitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.latitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.longitud)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.longitud)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.efectivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.efectivo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
