@@ -1,0 +1,62 @@
+﻿@model Boss_Mandados.Models.manboss_promociones
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Eliminar Promoción</h2>
+    </div>
+</div>
+<div class="wrapper-content">
+    <div class="ibox-content">
+        <form role="form" action="" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nombre</label>
+                <label class="col-sm-10 control-label">@Model.nombre</label>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Descripción</label>
+                <label class="col-sm-10 control-label">@Model.descripcion</label>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Descuento</label>
+                <label class="col-sm-10 control-label">@Model.descuento</label>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Cupón</label>
+                <label class="col-sm-10 control-label">@Model.cupon</label>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Fecha de Inicio</label>
+                <label class="col-sm-10 control-label">@Model.fecha_inicio</label>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Fecha de Fin</label>
+                <label class="col-sm-10 control-label">@Model.fecha_fin</label>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="wrapper-content">
+    <div class="ibox-content">
+        @using (Html.BeginForm())
+        {
+            <div class="form-horizontal">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label class="col-sm-12 control-label centrar">¿Confirmas que deseas eliminar esta promoción?</label>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button type="submit" class="btn btn-primary">Eliminar</button>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <p class="btn btn-primary eliminar">@Html.ActionLink("Volver", "Index")</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
