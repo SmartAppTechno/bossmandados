@@ -21,7 +21,7 @@ namespace Boss_Mandados.Controllers
             ViewBag.clientes = db_clientes.manboss_clientes.Count();
             ViewBag.servicios = db_servicios.manboss_servicios.Count();
             ViewBag.repartidores = db_repartidores.manboss_repartidores.Count();
-            ViewBag.administradores = db_administradores.manboss_usuarios.Count();
+            ViewBag.administradores = db_administradores.manboss_usuarios.Count(x=> x.rol == 1);
             ViewBag.mandados_espera = db_mandados.manboss_mandados.Count(x => x.estado == 1);
             ViewBag.mandados_asignado = db_mandados.manboss_mandados.Count(x => x.estado == 2);
             ViewBag.mandados_proceso = db_mandados.manboss_mandados.Count(x => x.estado == 3);

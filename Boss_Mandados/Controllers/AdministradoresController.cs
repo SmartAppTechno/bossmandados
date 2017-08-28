@@ -16,7 +16,7 @@ namespace Boss_Mandados
         // GET: Administradores
         public ActionResult Index()
         {
-            return View(db.manboss_usuarios.ToList());
+            return View(db.manboss_usuarios.Where(x=> x.rol == 1).ToList());
         }
 
         // GET: Administradores/Details/5
