@@ -1,58 +1,38 @@
 ﻿@model Boss_Mandados.Models.manboss_repartidores
-
-@{
-    ViewBag.Title = "Details";
-}
-
-<h2>Details</h2>
-
-<div>
-    <h4>manboss_repartidores</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.repartidor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.repartidor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.latitud)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.latitud)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.longitud)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.longitud)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.rating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.rating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.efectivo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.efectivo)
-        </dd>
-
-    </dl>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Detalles del Repartidor</h2>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="wrapper-content">
+    <div class="ibox-content">
+        <form role="form" action="" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Nombre</label>
+                <label class="col-sm-10 control-label">@ViewBag.item.usuario.nombre</label>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Correo</label>
+                <label class="col-sm-10 control-label">@ViewBag.item.usuario.correo</label>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Usuario</label>
+                <label class="col-sm-10 control-label">@ViewBag.item.usuario.usuario</label>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Efectivo</label>
+                <label class="col-sm-10 control-label">@ViewBag.item.repartidor.efectivo</label>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Rating</label>
+                <label class="col-sm-10 control-label">@ViewBag.item.repartidor.rating</label>
+            </div>
+        </form>
+    </div>
+</div>
+<p class="btn btn-w-m btn-primary">@Html.ActionLink("Editar", "Edit", new { id = ViewBag.item.repartidor.id })</p>
+<p class="btn btn-w-m btn-primary">@Html.ActionLink("Volver", "Index")</p>

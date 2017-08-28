@@ -801,7 +801,6 @@
     <Content Include="Views\Promociones\Edit.cshtml" />
     <Content Include="Views\Promociones\Index.cshtml" />
     <Content Include="Views\Repartidores\Create.cshtml" />
-    <Content Include="Views\Repartidores\Delete.cshtml" />
     <Content Include="Views\Repartidores\Details.cshtml" />
     <Content Include="Views\Repartidores\Edit.cshtml" />
     <Content Include="Views\Repartidores\Index.cshtml" />
