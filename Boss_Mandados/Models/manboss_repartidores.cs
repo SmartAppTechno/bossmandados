@@ -20,5 +20,6 @@ namespace Boss_Mandados.Models
         public double longitud { get; set; }
         public double rating { get; set; }
         public double efectivo { get; set; }
+        public int estado { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RepartidoresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RepartidoresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="manboss_repartidores">
           <Key>
             <PropertyRef Name="id" />
@@ -15,12 +15,12 @@
           <Property Name="longitud" Type="float" Nullable="false" />
           <Property Name="rating" Type="float" Nullable="false" />
           <Property Name="efectivo" Type="float" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="RepartidoresModelStoreContainer">
           <EntitySet Name="manboss_repartidores" EntityType="Self.manboss_repartidores" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RepartidoresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -34,6 +34,7 @@
           <Property Name="longitud" Type="Double" Nullable="false" />
           <Property Name="rating" Type="Double" Nullable="false" />
           <Property Name="efectivo" Type="Double" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="RepartidoresEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="manboss_repartidores" EntityType="Self.manboss_repartidores" />
@@ -47,6 +48,7 @@
           <EntitySetMapping Name="manboss_repartidores">
             <EntityTypeMapping TypeName="RepartidoresModel.manboss_repartidores">
               <MappingFragment StoreEntitySet="manboss_repartidores">
+                <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="repartidor" ColumnName="repartidor" />
                 <ScalarProperty Name="latitud" ColumnName="latitud" />
