@@ -451,6 +451,11 @@
     <Compile Include="Controllers\AdministradoresController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Images\green%402x.png" />
+    <Content Include="Images\green.png" />
+    <Content Include="Images\header-profile.png" />
+    <Content Include="Images\logo.png" />
     <Content Include="Models\Chat.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Chat.edmx</DependentUpon>
@@ -674,7 +679,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -784,6 +788,11 @@
     <Content Include="Models\Servicios.edmx.diagram">
       <DependentUpon>Servicios.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="packages.config" />
     <Content Include="Views\Administradores\Create.cshtml" />
     <Content Include="Views\Administradores\Delete.cshtml" />
