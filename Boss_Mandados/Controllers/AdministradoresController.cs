@@ -22,15 +22,7 @@ namespace Boss_Mandados
         // GET: Administradores/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             manboss_usuarios manboss_model = db.manboss_usuarios.Find(id);
-            if (manboss_model == null)
-            {
-                return HttpNotFound();
-            }
             MenuEntities db_menu = new MenuEntities();
             ViewBag.menus = db_menu.manboss_permisos_menu.ToList();
             PermisosEntities db_permisos = new PermisosEntities();
@@ -106,15 +98,7 @@ namespace Boss_Mandados
         // GET: Administradores/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             manboss_usuarios manboss_model = db.manboss_usuarios.Find(id);
-            if (manboss_model == null)
-            {
-                return HttpNotFound();
-            }
             MenuEntities db_menu = new MenuEntities();
             ViewBag.menus = db_menu.manboss_permisos_menu.ToList();
             PermisosEntities db_permisos = new PermisosEntities();
@@ -189,15 +173,7 @@ namespace Boss_Mandados
         // GET: Administradores/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             manboss_usuarios manboss_usuarios = db.manboss_usuarios.Find(id);
-            if (manboss_usuarios == null)
-            {
-                return HttpNotFound();
-            }
             return View(manboss_usuarios);
         }
 

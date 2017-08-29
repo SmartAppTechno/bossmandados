@@ -43,15 +43,7 @@ namespace Boss_Mandados.Controllers
         // GET: Repartidores/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             manboss_repartidores repartidor = db.manboss_repartidores.Find(id);
-            if (repartidor == null)
-            {
-                return HttpNotFound();
-            }
             Repartidor temporal = new Repartidor();
             manboss_usuarios user = db_usuarios.manboss_usuarios.Where(x => x.id == repartidor.repartidor).FirstOrDefault();
             temporal.usuario = user;
@@ -112,15 +104,7 @@ namespace Boss_Mandados.Controllers
         // GET: Repartidores/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             manboss_repartidores repartidor = db.manboss_repartidores.Find(id);
-            if (repartidor == null)
-            {
-                return HttpNotFound();
-            }
             manboss_usuarios user = db_usuarios.manboss_usuarios.Where(x => x.id == repartidor.repartidor).FirstOrDefault();
             ViewBag.usuario = user;
             return View(repartidor);
