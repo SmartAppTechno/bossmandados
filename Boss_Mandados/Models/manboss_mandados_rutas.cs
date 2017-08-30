@@ -18,5 +18,7 @@ namespace Boss_Mandados.Models
         public int mandado { get; set; }
         public double latitud { get; set; }
         public double longitud { get; set; }
+        public int servicio { get; set; }
+        public string comentarios { get; set; }
     }
 }

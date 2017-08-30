@@ -12,10 +12,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="estado" Type="int" Nullable="false" />
           <Property Name="cliente" Type="int" Nullable="false" />
-          <Property Name="servicio" Type="int" Nullable="false" />
           <Property Name="repartidor" Type="int" Nullable="false" />
           <Property Name="total" Type="float" Nullable="false" />
-          <Property Name="comentarios" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="fecha" Type="date" Nullable="false" />
           <Property Name="tiempo_trayecto" Type="time" Precision="7" Nullable="false" />
           <Property Name="tiempo_total" Type="time" Precision="7" Nullable="false" />
@@ -35,10 +33,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="estado" Type="Int32" Nullable="false" />
           <Property Name="cliente" Type="Int32" Nullable="false" />
-          <Property Name="servicio" Type="Int32" Nullable="false" />
           <Property Name="repartidor" Type="Int32" Nullable="false" />
           <Property Name="total" Type="Double" Nullable="false" />
-          <Property Name="comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="tiempo_trayecto" Type="Time" Nullable="false" Precision="7" />
           <Property Name="tiempo_total" Type="Time" Nullable="false" Precision="7" />
           <Property Name="cuenta_pendiente" Type="Int32" Nullable="false" />
@@ -60,10 +56,8 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="cliente" ColumnName="cliente" />
-                <ScalarProperty Name="servicio" ColumnName="servicio" />
                 <ScalarProperty Name="repartidor" ColumnName="repartidor" />
                 <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="comentarios" ColumnName="comentarios" />
                 <ScalarProperty Name="tiempo_trayecto" ColumnName="tiempo_trayecto" />
                 <ScalarProperty Name="tiempo_total" ColumnName="tiempo_total" />
                 <ScalarProperty Name="cuenta_pendiente" ColumnName="cuenta_pendiente" />

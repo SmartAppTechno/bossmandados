@@ -17,10 +17,8 @@ namespace Boss_Mandados.Models
         public int id { get; set; }
         public int estado { get; set; }
         public int cliente { get; set; }
-        public int servicio { get; set; }
         public int repartidor { get; set; }
         public double total { get; set; }
-        public string comentarios { get; set; }
         public System.TimeSpan tiempo_trayecto { get; set; }
         public System.TimeSpan tiempo_total { get; set; }
         public int cuenta_pendiente { get; set; }

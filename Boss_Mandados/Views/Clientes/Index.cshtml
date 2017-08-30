@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<Boss_Mandados.Models.manboss_clientes>
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>Clientes</h2>
     </div>
 </div>
-
 <div class="wrapper-content">
     <div class="ibox-content">
         <div class="table-responsive">
@@ -27,7 +28,7 @@
                             Dirección
                         </th>
                         <th>
-                           Teléfono
+                            Teléfono
                         </th>
                         <th>Acciones</th>
                     </tr>
@@ -42,8 +43,8 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.correo)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.red_social)
+                            <td class="tabla-icono">
+                                <i class="fa fa-@item.red_social fa-2x"></i>
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.direccion)
@@ -52,7 +53,9 @@
                                 @Html.DisplayFor(modelItem => item.telefono)
                             </td>
                             <td>
-                                <p class="btn btn-w-m btn-primary"><a href="@Url.Action("Details", "Administradores", new { id = item.id })"><i class="fa fa-eye"></i></a></p>
+                                <p class="btn btn-w-m btn-primary"><a href="@Url.Action("Details", "Clientes", new { id = item.id })"><i class="fa fa-eye"></i></a></p>
+                                <p class="btn btn-w-m btn-primary"><a href="@Url.Action("Direcciones", "Clientes", new { id = item.id })"><i class="fa fa-map"></i></a></p>
+                                <p class="btn btn-w-m btn-primary"><a href="@Url.Action("Mandados", "Clientes", new { id = item.id })"><i class="fa fa-files-o"></i></a></p>
                             </td>
                         </tr>
                     }
