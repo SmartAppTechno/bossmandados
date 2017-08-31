@@ -174,6 +174,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Chat.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChatMensaje.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChatMensaje.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChatMensaje.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChatMensaje.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChatMensaje.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChatMensaje.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Clientes.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -221,6 +236,9 @@
     </Compile>
     <Compile Include="Models\manboss_chat.cs">
       <DependentUpon>Chat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\manboss_chat_mensajes.cs">
+      <DependentUpon>ChatMensaje.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\manboss_clientes.cs">
       <DependentUpon>Clientes.tt</DependentUpon>
@@ -465,6 +483,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Chat.edmx</DependentUpon>
       <LastGenOutput>Chat.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ChatMensaje.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChatMensaje.edmx</DependentUpon>
+      <LastGenOutput>ChatMensaje.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ChatMensaje.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChatMensaje.edmx</DependentUpon>
+      <LastGenOutput>ChatMensaje.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Clientes.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -793,6 +821,13 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <EntityDeploy Include="Models\ChatMensaje.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ChatMensaje.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ChatMensaje.edmx.diagram">
+      <DependentUpon>ChatMensaje.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\Administradores\Create.cshtml" />
     <Content Include="Views\Administradores\Delete.cshtml" />
@@ -819,6 +854,8 @@
     <Content Include="Views\Clientes\Direcciones.cshtml" />
     <Content Include="Views\Clientes\Mandados.cshtml" />
     <Content Include="Views\Clientes\Mandado.cshtml" />
+    <Content Include="Views\Repartidores\Mandados.cshtml" />
+    <Content Include="Views\Repartidores\Comisiones.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

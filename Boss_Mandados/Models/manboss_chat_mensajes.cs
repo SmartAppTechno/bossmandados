@@ -12,10 +12,10 @@ namespace Boss_Mandados.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class manboss_chat
+    public partial class manboss_chat_mensajes
     {
         public int id { get; set; }
-        public int mandado { get; set; }
-        public string conversacion { get; set; }
+        public int chat { get; set; }
+        public string mensaje { get; set; }
     }
 }

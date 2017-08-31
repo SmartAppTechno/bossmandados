@@ -137,6 +137,18 @@ namespace Boss_Mandados.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Mandados(int? id)
+        {
+            
+            return View();
+        }
+
+        public ActionResult Comisiones(int? id)
+        {
+
+            return View();
+        }
+
         public static string random_string(int length)
         {
             Random random = new Random();
