@@ -10,6 +10,7 @@ using Boss_Mandados.Models;
 using System.Collections.Specialized;
 using System.Security.Cryptography;
 using System.Text;
+using System.Globalization;
 
 namespace Boss_Mandados.Controllers
 {
@@ -22,6 +23,11 @@ namespace Boss_Mandados.Controllers
         }
         private RepartidoresEntities db = new RepartidoresEntities();
         private UsuariosEntities db_usuarios = new UsuariosEntities();
+        private MandadosEntities db_mandados = new MandadosEntities();
+        private MandadosEstadosEntities db_mandados_estados = new MandadosEstadosEntities();
+        private MandadosRutasEntities db_mandados_rutas = new MandadosRutasEntities();
+        private ServiciosEntities db_servicios = new ServiciosEntities();
+        private ClientesEntities db_clientes = new ClientesEntities();
 
         // GET: Repartidores
         public ActionResult Index()
@@ -137,9 +143,47 @@ namespace Boss_Mandados.Controllers
             return RedirectToAction("Index");
         }
 
+        public struct Mandado_object
+        {
+            public int id;
+            public string estado;
+            public string fecha;
+            public string cliente;
+            public string total;
+            public string tiempo;
+            public string cuenta_pendiente;
+        }
+
+        public struct Mandado_detalle
+        {
+            public string servicio;
+            public string comentarios;
+            public float latitud;
+            public float longitud;
+        }
+
         public ActionResult Mandados(int? id)
         {
-            
+            /*List<Mandado_object> mandados = new List<Mandado_object>();
+            var mandados_db = db_mandados.manboss_mandados.Where(x => x.repartidor == id).ToList();
+            foreach (var mandado in mandados_db)
+            {
+                Mandado_object aux = new Mandado_object();
+                aux.id = mandado.id;
+                aux.estado = db_mandados_estados.manboss_mandados_estados.Where(x => x.id == mandado.estado).Select(x => x.nombre).FirstOrDefault();
+                aux.fecha = mandado.fecha.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                aux.cliente = db_clientes.manboss_clientes.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
+                aux.total = String.Format("{0:C}", mandado.total);
+                aux.tiempo = mandado.tiempo_total.ToString();
+                if(mandado.cuenta_pendiente == 0) { aux.cuenta_pendiente = "Pagada"; } else if(mandado.cuenta_pendiente == 1) { aux.cuenta_pendiente = "Pendiente"; }
+                mandados.Add(aux);
+            }*/
+            return View();
+        }
+
+        public ActionResult Mandado(int? id)
+        {
+
             return View();
         }
 
