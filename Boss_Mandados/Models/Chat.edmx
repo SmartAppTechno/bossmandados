@@ -11,7 +11,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="mandado" Type="int" Nullable="false" />
-          <Property Name="conversacion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="repartidor" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ChatModelStoreContainer">
           <EntitySet Name="manboss_chat" EntityType="Self.manboss_chat" Schema="dbo" store:Type="Tables" />
@@ -26,7 +26,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="mandado" Type="Int32" Nullable="false" />
-          <Property Name="conversacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="repartidor" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ChatEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="manboss_chat" EntityType="Self.manboss_chat" />
@@ -40,9 +40,9 @@
           <EntitySetMapping Name="manboss_chat">
             <EntityTypeMapping TypeName="ChatModel.manboss_chat">
               <MappingFragment StoreEntitySet="manboss_chat">
+                <ScalarProperty Name="repartidor" ColumnName="repartidor" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="mandado" ColumnName="mandado" />
-                <ScalarProperty Name="conversacion" ColumnName="conversacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

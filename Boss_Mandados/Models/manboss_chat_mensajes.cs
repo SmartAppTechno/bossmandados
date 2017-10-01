@@ -17,5 +17,6 @@ namespace Boss_Mandados.Models
         public int id { get; set; }
         public int chat { get; set; }
         public string mensaje { get; set; }
+        public int tipo { get; set; }
     }
 }

@@ -1,0 +1,29 @@
+﻿@model Boss_Mandados.Models.manboss_chat
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Detalles de la Conversación</h2>
+    </div>
+</div>
+<div class="wrapper-content">
+    <div class="ibox-content contenedor_mensajes">
+        @foreach (var item in ViewBag.mensajes)
+        {
+            if (item.tipo == 0)
+            {
+                <div class="mensaje_izquierda">
+                    <p>@item.mensaje</p>
+                </div>
+            }
+            else if(item.tipo == 1)
+            {
+                <div class="mensaje_derecha">
+                    <p>@item.mensaje</p>
+                </div>
+            }
+        }
+    </div>
+</div>
+<p class="btn btn-w-m btn-primary">@Html.ActionLink("Volver", "Index")</p>
