@@ -18,6 +18,7 @@
                         <th>Cliente</th>
                         <th>Total</th>
                         <th>Tiempo</th>
+                        <th>Cuenta</th>
                         <th>Detalles</th>
                     </tr>
                 </thead>
@@ -32,13 +33,19 @@
                                 @item.fecha
                             </td>
                             <td>
-                                @item.repartidor
+                                @item.cliente
                             </td>
                             <td>
                                 @item.total
                             </td>
                             <td>
-                                <p class="btn btn-w-m btn-primary"><a href="@Url.Action("Mandado", "Clientes", new { id = item.id })"><i class="fa fa-eye"></i></a></p>
+                                @item.tiempo
+                            </td>
+                            <td>
+                                @item.cuenta
+                            </td>
+                            <td>
+                                <p class="btn btn-w-m btn-primary"><a href="@Url.Action("Mandado", "Repartidores", new { id = item.id })"><i class="fa fa-eye"></i></a></p>
                             </td>
                         </tr>
                     }

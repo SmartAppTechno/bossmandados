@@ -151,7 +151,7 @@ namespace Boss_Mandados.Controllers
             public string cliente;
             public string total;
             public string tiempo;
-            public string cuenta_pendiente;
+            public string cuenta;
         }
 
         public struct Mandado_detalle
@@ -164,7 +164,7 @@ namespace Boss_Mandados.Controllers
 
         public ActionResult Mandados(int? id)
         {
-            /*List<Mandado_object> mandados = new List<Mandado_object>();
+            List<Mandado_object> mandados = new List<Mandado_object>();
             var mandados_db = db_mandados.manboss_mandados.Where(x => x.repartidor == id).ToList();
             foreach (var mandado in mandados_db)
             {
@@ -175,15 +175,28 @@ namespace Boss_Mandados.Controllers
                 aux.cliente = db_clientes.manboss_clientes.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
                 aux.total = String.Format("{0:C}", mandado.total);
                 aux.tiempo = mandado.tiempo_total.ToString();
-                if(mandado.cuenta_pendiente == 0) { aux.cuenta_pendiente = "Pagada"; } else if(mandado.cuenta_pendiente == 1) { aux.cuenta_pendiente = "Pendiente"; }
+                if(mandado.cuenta_pendiente == 0) { aux.cuenta = "Pagada"; } else if(mandado.cuenta_pendiente == 1) { aux.cuenta = "Pendiente"; }
                 mandados.Add(aux);
-            }*/
+            }
+            ViewBag.mandados = mandados;
             return View();
         }
 
         public ActionResult Mandado(int? id)
         {
-
+            List<Mandado_detalle> mandados = new List<Mandado_detalle>();
+            var mandados_db = db_mandados_rutas.manboss_mandados_rutas.Where(x => x.mandado == id).ToList();
+            foreach (var mandado in mandados_db)
+            {
+                Mandado_detalle aux = new Mandado_detalle();
+                aux.servicio = db_servicios.manboss_servicios.Where(x => x.id == mandado.servicio).Select(x => x.nombre).FirstOrDefault();
+                aux.comentarios = mandado.comentarios;
+                aux.latitud = (float)mandado.latitud;
+                aux.longitud = (float)mandado.longitud;
+                mandados.Add(aux);
+            }
+            ViewBag.mandado = mandados;
+            ViewBag.mandado_id = db_mandados.manboss_mandados.Where(x => x.id == id).Select(x => x.cliente).FirstOrDefault();
             return View();
         }
 
