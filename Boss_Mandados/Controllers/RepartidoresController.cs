@@ -28,6 +28,7 @@ namespace Boss_Mandados.Controllers
         private MandadosRutasEntities db_mandados_rutas = new MandadosRutasEntities();
         private ServiciosEntities db_servicios = new ServiciosEntities();
         private ClientesEntities db_clientes = new ClientesEntities();
+        private ComisionesEntities db_comisiones = new ComisionesEntities();
 
         // GET: Repartidores
         public ActionResult Index()
@@ -200,9 +201,29 @@ namespace Boss_Mandados.Controllers
             return View();
         }
 
+        public struct Comision
+        {
+            public string fecha;
+            public string cliente;
+            public string total;
+            public string comision;
+        }
+
         public ActionResult Comisiones(int? id)
         {
-
+            List<Comision> comisiones = new List<Comision>();
+            var comisiones_db = db_comisiones.manboss_comisiones.Where(x => x.repartidor == id).ToList();
+            foreach (var com in comisiones_db)
+            {
+                Comision aux = new Comision();
+                aux.fecha = db_mandados.manboss_mandados.Where(x => x.id == com.mandado).Select(x => x.fecha).FirstOrDefault().ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                int mandado_cliente = db_mandados.manboss_mandados.Where(x => x.id == com.mandado).Select(x => x.cliente).FirstOrDefault();
+                aux.cliente = db_clientes.manboss_clientes.Where(x => x.id == mandado_cliente).Select(x => x.nombre).FirstOrDefault();
+                aux.total = String.Format("{0:C}", db_mandados.manboss_mandados.Where(x => x.id == com.mandado).Select(x => x.total).FirstOrDefault());
+                aux.comision = String.Format("{0:C}", com.comision);
+                comisiones.Add(aux);
+            }
+            ViewBag.comisiones = comisiones;
             return View();
         }
 
