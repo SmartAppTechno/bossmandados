@@ -776,13 +776,6 @@
     <Content Include="Models\PromocionesClientes.edmx.diagram">
       <DependentUpon>PromocionesClientes.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\Promociones.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Promociones.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Promociones.edmx.diagram">
-      <DependentUpon>Promociones.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\MandadosRutas.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MandadosRutas.Designer.cs</LastGenOutput>
@@ -852,6 +845,13 @@
       <DependentUpon>ChatMensaje.edmx</DependentUpon>
     </Content>
     <Content Include="Connected Services\bossmandadosAzureStorage\ConnectedService.json" />
+    <EntityDeploy Include="Models\Promociones.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Promociones.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Promociones.edmx.diagram">
+      <DependentUpon>Promociones.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\Administradores\Create.cshtml" />
     <Content Include="Views\Administradores\Delete.cshtml" />

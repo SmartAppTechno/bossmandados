@@ -10,10 +10,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="descuento" Type="int" />
-          <Property Name="cupon" Type="nvarchar" MaxLength="50" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descuento" Type="float" />
+          <Property Name="cupon" Type="varchar" MaxLength="50" />
           <Property Name="fecha_inicio" Type="date" Nullable="false" />
           <Property Name="fecha_fin" Type="date" Nullable="false" />
         </EntityType>
@@ -30,10 +30,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="descuento" Type="Int32" />
-          <Property Name="cupon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descuento" Type="Double" />
+          <Property Name="cupon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>

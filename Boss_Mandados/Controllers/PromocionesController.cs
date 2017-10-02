@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Boss_Mandados.Models;
+using System.Web;
 
 namespace Boss_Mandados.Controllers
 {
@@ -32,7 +33,7 @@ namespace Boss_Mandados.Controllers
         // POST: Promociones/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost,ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,nombre,descripcion,descuento,cupon,fecha_inicio,fecha_fin")] manboss_promociones manboss_promociones)
         {
@@ -51,7 +52,7 @@ namespace Boss_Mandados.Controllers
         // POST: Promociones/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,nombre,descripcion,descuento,cupon,fecha_inicio,fecha_fin")] manboss_promociones manboss_promociones)
         {

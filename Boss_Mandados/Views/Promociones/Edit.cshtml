@@ -19,17 +19,17 @@
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Descrición</label>
-                <div class="col-sm-10"><textarea id="descripcion" name="descripcion" value="@Model.descripcion" required></textarea></div>
+                <div class="col-sm-10"><textarea id="descripcion" name="descripcion" required>@Model.descripcion</textarea></div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Descuento (Del 0 al 1)</label>
-                <div class="col-sm-10"><input type="number" min="0.00" max="1.00" step=".01" name="descuento" class="form-control" value="@Model.descuento" required></div>
+                <div class="col-sm-10"><input type="number" min="0.00" max="1.00" step=".01" name="descuento" class="form-control" value="@Model.descuento"></div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Cupón</label>
-                <div class="col-sm-10"><input type="text" name="cupon" class="form-control" value="@Model.cupon" required></div>
+                <div class="col-sm-10"><input type="text" name="cupon" class="form-control" value="@Model.cupon"></div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
@@ -51,3 +51,16 @@
     </div>
 </div>
 <p class="btn btn-w-m btn-primary">@Html.ActionLink("Volver", "Index")</p>
+<script>
+$(document).ready(function(){
+    $('#descripcion').summernote({
+    	height: 200
+    });
+    $('.fecha_inicio').datepicker({
+        format: 'yyyy-mm-dd',
+    });
+    $('.fecha_fin').datepicker({
+        format: 'yyyy-mm-dd',
+    });
+});
+</script>
