@@ -149,6 +149,19 @@ p.btn-primary {
 .mensaje_derecha p,.mensaje_izquierda p{
     margin0;
 }
+#textarea {
+    font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    outline: 0;
+    background: #fff;
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    height: 200px;
+    border: 1px solid #ccc;
+    color: #777;
+}
 /*BossMandados*/
 /*
  *

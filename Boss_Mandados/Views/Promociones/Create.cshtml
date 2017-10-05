@@ -19,7 +19,7 @@
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Descrición</label>
-                <div class="col-sm-10"><textarea id="descripcion" name="descripcion" required></textarea></div>
+                <div class="col-sm-10"><textarea id="textarea" name="descripcion" required></textarea></div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
@@ -53,9 +53,6 @@
 <p class="btn btn-w-m btn-primary">@Html.ActionLink("Volver", "Index")</p>
 <script>
 $(document).ready(function(){
-    $('#descripcion').summernote({
-    	height: 200
-    });
     $('.fecha_inicio').datepicker({
         format: 'yyyy-mm-dd',
     });

@@ -19,7 +19,7 @@
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Descrición</label>
-                <div class="col-sm-10"><textarea id="descripcion" name="descripcion" required>@Model.descripcion</textarea></div>
+                <div class="col-sm-10"><textarea id="textarea" name="descripcion" required>@Model.descripcion</textarea></div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
@@ -34,12 +34,12 @@
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Fecha de Inicio</label>
-                <div class="col-sm-10"><input class="form-control fecha_inicio" type="text" name="fecha_inicio" value="@Model.fecha_inicio" required></div>
+                <div class="col-sm-10"><input class="form-control fecha_inicio" type="text" name="fecha_inicio" value="@Model.fecha_inicio.ToString("dd/MM/yyyy")" required></div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Fecha de Fin</label>
-                <div class="col-sm-10"><input class="form-control fecha_fin" type="text" name="fecha_fin" value="@Model.fecha_fin" required></div>
+                <div class="col-sm-10"><input class="form-control fecha_fin" type="text" name="fecha_fin" value="@Model.fecha_fin.ToString("dd/MM/yyyy")" required></div>
             </div>
             <div class="hr-line-dashed"></div>
             <div class="form-group">
@@ -53,9 +53,6 @@
 <p class="btn btn-w-m btn-primary">@Html.ActionLink("Volver", "Index")</p>
 <script>
 $(document).ready(function(){
-    $('#descripcion').summernote({
-    	height: 200
-    });
     $('.fecha_inicio').datepicker({
         format: 'yyyy-mm-dd',
     });

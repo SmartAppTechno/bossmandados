@@ -53,10 +53,10 @@
                                 @Html.DisplayFor(modelItem => item.cupon)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.fecha_inicio)
+                                @item.fecha_fin.ToString("dd/MM/yyyy")
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.fecha_fin)
+                                @item.fecha_fin.ToString("dd/MM/yyyy")
                             </td>
                             <td>
                                 <p class="btn btn-w-m btn-primary"><a href="@Url.Action("Edit", "Promociones", new { id = item.id })"><i class="fa fa-pencil"></i></a></p>
