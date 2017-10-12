@@ -32,7 +32,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="descuento" Type="Double" />
+          <Property Name="descuento" Type="Int32" />
           <Property Name="cupon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="fecha_inicio" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fecha_fin" Type="DateTime" Nullable="false" Precision="0" />

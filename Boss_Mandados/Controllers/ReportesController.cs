@@ -29,7 +29,8 @@ namespace Boss_Mandados.Controllers
             {
                 DateTime fi = Convert.ToDateTime(Request.Form["fecha_inicio"]);
                 DateTime ff = Convert.ToDateTime(Request.Form["fecha_fin"]);
-                var promocion_db = db.manboss_promociones.Where(x=> x.fecha_inicio >= fi).ToList();
+                var promocion_db = db.manboss_promociones.Where(x=> x.fecha_inicio >= fi && x.fecha_fin <= ff).ToList();
+                int total = 0;
                 foreach (var promocion in promocion_db)
                 {
                     Promocion aux = new Promocion();
@@ -38,9 +39,10 @@ namespace Boss_Mandados.Controllers
                     aux.fecha_inicio = promocion.fecha_inicio.ToString("dd/MM/yyyy");
                     aux.fecha_fin = promocion.fecha_fin.ToString("dd/MM/yyyy");
                     aux.veces = db_prom_clientes.manboss_promociones_clientes.Where(x => x.promocion == promocion.id).Count();
+                    total += aux.veces;
                     promociones.Add(aux);
                 }
-                ViewBag.estado = "busqueda";
+                ViewBag.total_promociones = total;
             }
             else
             {
@@ -55,7 +57,6 @@ namespace Boss_Mandados.Controllers
                     aux.veces = db_prom_clientes.manboss_promociones_clientes.Where(x => x.promocion == promocion.id).Count();
                     promociones.Add(aux);
                 }
-                ViewBag.estado = "todo";
             }
             ViewBag.promociones = promociones;
             return View();

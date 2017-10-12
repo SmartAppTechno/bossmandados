@@ -162,6 +162,13 @@ p.btn-primary {
     border: 1px solid #ccc;
     color: #777;
 }
+.formulario_reportes{
+margin-top:3em;
+}
+.control-label {
+    margin-top: 0.5em;
+    text-align: center;
+}
 /*BossMandados*/
 /*
  *
@@ -971,6 +978,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     background-color: #40D284;
     border-color: #40D284;
     color: #FFFFFF;
+    width:100%;
 }
 
     .btn-primary:hover,

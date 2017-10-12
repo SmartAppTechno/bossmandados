@@ -17,7 +17,7 @@ namespace Boss_Mandados.Models
         public int id { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
-        public Nullable<double> descuento { get; set; }
+        public Nullable<int> descuento { get; set; }
         public string cupon { get; set; }
         public System.DateTime fecha_inicio { get; set; }
         public System.DateTime fecha_fin { get; set; }
