@@ -882,6 +882,7 @@
     <Content Include="Views\Promociones\Edit.cshtml" />
     <Content Include="Views\Promociones\Index.cshtml" />
     <Content Include="Views\Reportes\Promociones.cshtml" />
+    <Content Include="Views\Reportes\Repartidores.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

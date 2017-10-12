@@ -29,6 +29,7 @@ namespace Boss_Mandados.Controllers
         private ServiciosEntities db_servicios = new ServiciosEntities();
         private ClientesEntities db_clientes = new ClientesEntities();
         private ComisionesEntities db_comisiones = new ComisionesEntities();
+        private RepartidoresCalificacionesEntities db_calificaciones = new RepartidoresCalificacionesEntities();
 
         // GET: Repartidores
         public ActionResult Index()
@@ -38,6 +39,9 @@ namespace Boss_Mandados.Controllers
             foreach(var repartidor in rep_db)
             {
                 manboss_usuarios user = db_usuarios.manboss_usuarios.Where(x => x.id == repartidor.repartidor).FirstOrDefault();
+                double total = db_calificaciones.manboss_repartidores_calificaciones.Where(x => x.repartidor == repartidor.id).Sum(x=> x.calificacion);
+                int pedidos = db_calificaciones.manboss_repartidores_calificaciones.Where(x => x.repartidor == repartidor.id).Count();
+                repartidor.rating = total / pedidos;
                 Repartidor temporal = new Repartidor();
                 temporal.repartidor = repartidor;
                 temporal.usuario = user;
