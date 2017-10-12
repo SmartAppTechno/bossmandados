@@ -14,6 +14,8 @@ namespace Boss_Mandados.Controllers
         private RepartidoresEntities db_repartidores = new RepartidoresEntities();
         private RepartidoresCalificacionesEntities db_calificaciones = new RepartidoresCalificacionesEntities();
         private UsuariosEntities db_usuarios = new UsuariosEntities();
+        private MandadosEntities db_mandados = new MandadosEntities();
+        private MandadosEstadosEntities db_estados = new MandadosEstadosEntities();
 
         public struct Promocion
         {
@@ -29,6 +31,15 @@ namespace Boss_Mandados.Controllers
             public string nombre;
             public double rating;
             public double efectivo;
+        }
+
+        public struct Mandado
+        {
+            public string estado;
+            public string cliente;
+            public string repartidor;
+            public double total;
+            public string fecha;
         }
 
         // GET: Promociones
@@ -96,6 +107,50 @@ namespace Boss_Mandados.Controllers
             ViewBag.rating_total = rating_total / rep;
             ViewBag.efectivo_total = efectivo_total;
             ViewBag.repartidores = repartidores;
+            return View();
+        }
+
+        // GET: Mandados
+        public ActionResult Mandados()
+        {
+            List<Mandado> mandados = new List<Mandado>();
+            if (Request.Form["fecha"] != null && Request.Form["estado"] != null)
+            {
+                DateTime fecha = Convert.ToDateTime(Request.Form["fecha"]);
+                int estado = Int32.Parse(Request.Form["estado"]);
+                var mandado_db = db_mandados.manboss_mandados.Where(x => x.fecha == fecha && x.estado == estado).ToList();
+                double total = 0;
+                foreach (var mandado in mandado_db)
+                {
+                    Mandado aux = new Mandado();
+                    aux.estado = db_estados.manboss_mandados_estados.Where(x => x.id == mandado.estado).Select(x => x.nombre).FirstOrDefault();
+                    aux.cliente = db_usuarios.manboss_usuarios.Where(x=> x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
+                    aux.repartidor = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.repartidor).Select(x => x.nombre).FirstOrDefault();
+                    aux.total = mandado.total;
+                    aux.fecha = mandado.fecha.ToString("dd/MM/yyyy");
+                    total += aux.total;
+                    mandados.Add(aux);
+                }
+                ViewBag.total_mandados = total;
+            }
+            else
+            {
+                var mandado_db = db_mandados.manboss_mandados.ToList();
+                double total = 0;
+                foreach (var mandado in mandado_db)
+                {
+                    Mandado aux = new Mandado();
+                    aux.estado = db_estados.manboss_mandados_estados.Where(x => x.id == mandado.estado).Select(x => x.nombre).FirstOrDefault();
+                    aux.cliente = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
+                    aux.repartidor = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.repartidor).Select(x => x.nombre).FirstOrDefault();
+                    aux.total = mandado.total;
+                    aux.fecha = mandado.fecha.ToString("dd/MM/yyyy");
+                    total += aux.total;
+                    mandados.Add(aux);
+                }
+                ViewBag.total_mandados = total;
+            }
+            ViewBag.mandados = mandados;
             return View();
         }
     }
