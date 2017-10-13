@@ -14,9 +14,9 @@
           <Property Name="cliente" Type="int" Nullable="false" />
           <Property Name="repartidor" Type="int" Nullable="false" />
           <Property Name="total" Type="float" Nullable="false" />
-          <Property Name="fecha" Type="date" Nullable="false" />
-          <Property Name="tiempo_trayecto" Type="time" Precision="7" Nullable="false" />
-          <Property Name="tiempo_total" Type="time" Precision="7" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="tiempo_trayecto" Type="datetime" Nullable="false" />
+          <Property Name="tiempo_total" Type="datetime" Nullable="false" />
           <Property Name="cuenta_pendiente" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MandadosModelStoreContainer">
@@ -35,10 +35,10 @@
           <Property Name="cliente" Type="Int32" Nullable="false" />
           <Property Name="repartidor" Type="Int32" Nullable="false" />
           <Property Name="total" Type="Double" Nullable="false" />
-          <Property Name="tiempo_trayecto" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="tiempo_total" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="tiempo_trayecto" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tiempo_total" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="cuenta_pendiente" Type="Int32" Nullable="false" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityContainer Name="MandadosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="manboss_mandados" EntityType="Self.manboss_mandados" />

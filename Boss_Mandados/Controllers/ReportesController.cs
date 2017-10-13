@@ -97,7 +97,7 @@ namespace Boss_Mandados.Controllers
                 aux.nombre = db_usuarios.manboss_usuarios.Where(x => x.id == repartidor.repartidor).Select(x => x.nombre).FirstOrDefault();
                 double total = db_calificaciones.manboss_repartidores_calificaciones.Where(x => x.repartidor == repartidor.id).Sum(x => x.calificacion);
                 int pedidos = db_calificaciones.manboss_repartidores_calificaciones.Where(x => x.repartidor == repartidor.id).Count();
-                aux.rating = efectivo_total / pedidos;
+                aux.rating = total / pedidos;
                 aux.efectivo = repartidor.efectivo;
                 efectivo_total += aux.efectivo;
                 rating_total += aux.rating;

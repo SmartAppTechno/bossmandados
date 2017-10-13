@@ -19,8 +19,8 @@ namespace Boss_Mandados.Models
         public int cliente { get; set; }
         public int repartidor { get; set; }
         public double total { get; set; }
-        public System.TimeSpan tiempo_trayecto { get; set; }
-        public System.TimeSpan tiempo_total { get; set; }
+        public System.DateTime tiempo_trayecto { get; set; }
+        public System.DateTime tiempo_total { get; set; }
         public int cuenta_pendiente { get; set; }
         public System.DateTime fecha { get; set; }
     }
