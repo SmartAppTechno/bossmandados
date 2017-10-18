@@ -18,6 +18,7 @@
           <Property Name="tiempo_trayecto" Type="datetime" Nullable="false" />
           <Property Name="tiempo_total" Type="datetime" Nullable="false" />
           <Property Name="cuenta_pendiente" Type="int" Nullable="false" />
+          <Property Name="tipo_pago" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MandadosModelStoreContainer">
           <EntitySet Name="manboss_mandados" EntityType="Self.manboss_mandados" Schema="dbo" store:Type="Tables" />
@@ -39,6 +40,7 @@
           <Property Name="tiempo_total" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="cuenta_pendiente" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tipo_pago" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MandadosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="manboss_mandados" EntityType="Self.manboss_mandados" />
@@ -52,6 +54,7 @@
           <EntitySetMapping Name="manboss_mandados">
             <EntityTypeMapping TypeName="MandadosModel.manboss_mandados">
               <MappingFragment StoreEntitySet="manboss_mandados">
+                <ScalarProperty Name="tipo_pago" ColumnName="tipo_pago" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="estado" ColumnName="estado" />

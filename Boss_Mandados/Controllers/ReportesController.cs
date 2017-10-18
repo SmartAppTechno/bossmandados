@@ -42,6 +42,16 @@ namespace Boss_Mandados.Controllers
             public string fecha;
         }
 
+        public struct Comision
+        {
+            public string repartidor;
+            public DateTime fecha;
+            public string fecha_text;
+            public double total;
+            public double comision;
+            public int tipo_pago;
+        }
+
         // GET: Promociones
         public ActionResult Promociones()
         {
@@ -151,6 +161,12 @@ namespace Boss_Mandados.Controllers
                 ViewBag.total_mandados = total;
             }
             ViewBag.mandados = mandados;
+            return View();
+        }
+
+        // GET: Comisiones
+        public ActionResult Comisiones()
+        {
             return View();
         }
     }

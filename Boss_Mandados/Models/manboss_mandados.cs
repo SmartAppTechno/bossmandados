@@ -23,5 +23,6 @@ namespace Boss_Mandados.Models
         public System.DateTime tiempo_total { get; set; }
         public int cuenta_pendiente { get; set; }
         public System.DateTime fecha { get; set; }
+        public int tipo_pago { get; set; }
     }
 }

@@ -886,6 +886,7 @@
     <Content Include="Views\Reportes\Repartidores.cshtml" />
     <Content Include="Views\Reportes\Mandados.cshtml" />
     <None Include="Properties\PublishProfiles\AppBossMandados - Web Deploy.pubxml" />
+    <Content Include="Views\Reportes\Comisiones.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
