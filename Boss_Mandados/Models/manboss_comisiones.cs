@@ -17,5 +17,6 @@ namespace Boss_Mandados.Models
         public int id { get; set; }
         public int mandado { get; set; }
         public double comision { get; set; }
+        public int repartidor { get; set; }
     }
 }
