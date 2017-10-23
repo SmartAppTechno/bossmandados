@@ -176,6 +176,7 @@
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MandadosController.cs" />
     <Compile Include="Controllers\PanelController.cs" />
     <Compile Include="Controllers\PromocionesController.cs" />
     <Compile Include="Controllers\RepartidoresController.cs" />
@@ -887,6 +888,7 @@
     <Content Include="Views\Reportes\Mandados.cshtml" />
     <None Include="Properties\PublishProfiles\AppBossMandados - Web Deploy.pubxml" />
     <Content Include="Views\Reportes\Comisiones.cshtml" />
+    <Content Include="Views\Mandados\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

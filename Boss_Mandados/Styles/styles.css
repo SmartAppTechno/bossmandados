@@ -1,6 +1,4 @@
-﻿@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500,700");
-/*BossMandados*/
+﻿/*BossMandados*/
 img {
     max-width: 100%;
 }
@@ -978,7 +976,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     background-color: #40D284;
     border-color: #40D284;
     color: #FFFFFF;
-    width:100%;
+    width:50px;
 }
 
     .btn-primary:hover,
@@ -3582,6 +3580,9 @@ a.forum-item-title {
     }
 }
 /* Tabs */
+.tabs-container {
+margin-top:30px;
+}
 .tabs-container .panel-body {
     background: #fff;
     border: 1px solid #e7eaec;
@@ -4850,10 +4851,6 @@ code {
     background-color: #ffffff;
     color: inherit;
     padding: 15px 20px 20px 20px;
-    border-color: #e7eaec;
-    border-image: none;
-    border-style: solid solid none;
-    border-width: 1px 0;
 }
 
 .ibox-footer {
@@ -4895,10 +4892,6 @@ table.table-mail tr td {
 
 .unread td {
     background-color: #f9f8f8;
-}
-
-.ibox-content {
-    clear: both;
 }
 
 .ibox-heading {
