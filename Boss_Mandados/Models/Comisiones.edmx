@@ -28,7 +28,6 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="mandado" Type="Int32" Nullable="false" />
-          <Property Name="repartidor" Type="Int32" Nullable="false" />
           <Property Name="comision" Type="Double" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ComisionesEntities" annotation:LazyLoadingEnabled="true">
@@ -45,7 +44,6 @@
               <MappingFragment StoreEntitySet="manboss_comisiones">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="mandado" ColumnName="mandado" />
-                <ScalarProperty Name="repartidor" ColumnName="repartidor" />
                 <ScalarProperty Name="comision" ColumnName="comision" />
               </MappingFragment>
             </EntityTypeMapping>

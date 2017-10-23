@@ -16,6 +16,7 @@ namespace Boss_Mandados.Controllers
         private UsuariosEntities db_usuarios = new UsuariosEntities();
         private MandadosEntities db_mandados = new MandadosEntities();
         private MandadosEstadosEntities db_estados = new MandadosEstadosEntities();
+        private ComisionesEntities db_comisiones = new ComisionesEntities();
 
         public struct Promocion
         {
@@ -45,11 +46,16 @@ namespace Boss_Mandados.Controllers
         public struct Comision
         {
             public string repartidor;
-            public DateTime fecha;
-            public string fecha_text;
+            public string fecha;
             public double total;
             public double comision;
-            public int tipo_pago;
+            public string tipo_pago;
+        }
+
+        public struct Empleado
+        {
+            public int id;
+            public string nombre;
         }
 
         // GET: Promociones
@@ -167,6 +173,79 @@ namespace Boss_Mandados.Controllers
         // GET: Comisiones
         public ActionResult Comisiones()
         {
+            List<Comision> comisiones = new List<Comision>();
+            double pagar = 0;
+            double deben = 0;
+            //Repartidor
+            if (Request.Form["repartidor"] != null)
+            {
+                DateTime fi = Convert.ToDateTime(Request.Form["fecha_inicio"]);
+                DateTime ff = Convert.ToDateTime(Request.Form["fecha_fin"]);
+                int repatidor_id = Int32.Parse(Request.Form["repartidor"]);
+                var mandados_db = db_mandados.manboss_mandados.Where(x => x.fecha >= fi && x.fecha <= ff && x.repartidor == repatidor_id).ToList();
+                foreach (var mandado in mandados_db)
+                {
+                    Comision aux = new Comision();
+                    aux.repartidor = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.repartidor).Select(x => x.nombre).FirstOrDefault();
+                    aux.fecha = mandado.fecha.ToString("dd/MM/yyyy");
+                    aux.total = mandado.total;
+                    aux.comision = db_comisiones.manboss_comisiones.Where(x => x.mandado == mandado.id).Select(x => x.comision).FirstOrDefault();
+                    if(mandado.tipo_pago == 0)
+                    {
+                        aux.tipo_pago = "Efectivo";
+                        double temp = aux.total - aux.comision;
+                        deben += temp;
+                    }
+                    if (mandado.tipo_pago == 1)
+                    {
+                        aux.tipo_pago = "Paypal";
+                        pagar += aux.comision;
+                    }
+                    comisiones.Add(aux);
+                }
+            }
+            //Sin Repartidor
+            else if (Request.Form["repartidor"] == null)
+            {
+                DateTime fi = Convert.ToDateTime(Request.Form["fecha_inicio"]);
+                DateTime ff = Convert.ToDateTime(Request.Form["fecha_fin"]);
+                var mandados_db = db_mandados.manboss_mandados.Where(x => x.fecha >= fi && x.fecha <= ff).ToList();
+                foreach (var mandado in mandados_db)
+                {
+                    Comision aux = new Comision();
+                    aux.repartidor = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.repartidor).Select(x => x.nombre).FirstOrDefault();
+                    aux.fecha = mandado.fecha.ToString("dd/MM/yyyy");
+                    aux.total = mandado.total;
+                    aux.comision = db_comisiones.manboss_comisiones.Where(x => x.mandado == mandado.id).Select(x => x.comision).FirstOrDefault();
+                    if (mandado.tipo_pago == 0)
+                    {
+                        aux.tipo_pago = "Efectivo";
+                        double temp = aux.total - aux.comision;
+                        deben += temp;
+                    }
+                    if (mandado.tipo_pago == 1)
+                    {
+                        aux.tipo_pago = "Paypal";
+                        pagar += aux.comision;
+                    }
+                    comisiones.Add(aux);
+                }
+            }
+            ViewBag.comisiones = comisiones;
+            ViewBag.pagar = pagar;
+            ViewBag.deben = deben;
+            //Agregar la lista de repartidores para la búsqueda
+            var repartidor_id = db_repartidores.manboss_repartidores.ToList();
+            List<Empleado> repartidores = new List<Empleado>();
+            foreach (var item in repartidor_id)
+            {
+                var repartidor = db_usuarios.manboss_usuarios.Where(x => x.id == item.repartidor).FirstOrDefault();
+                Empleado aux = new Empleado();
+                aux.id = repartidor.id;
+                aux.nombre = repartidor.nombre;
+                repartidores.Add(aux);
+            }
+            ViewBag.repartidores = repartidores;
             return View();
         }
     }
