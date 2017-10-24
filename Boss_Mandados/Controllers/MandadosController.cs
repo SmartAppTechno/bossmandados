@@ -23,6 +23,13 @@ namespace Boss_Mandados.Controllers
             public string fecha;
         }
 
+        public struct Repartidor
+        {
+            public string nombre;
+            public double latitud;
+            public double longitud;
+        }
+
         // GET: Mandados
         public ActionResult Index()
         {
@@ -78,6 +85,18 @@ namespace Boss_Mandados.Controllers
                 entregado.Add(aux);
             }
             ViewBag.mandados_entregado = entregado;
+            //Repartidores
+            List<Repartidor> mandaderos = new List<Repartidor>();
+            var mandaderos_db = db_repartidores.manboss_repartidores.ToList();
+            foreach (var mandadero in mandaderos_db)
+            {
+                Repartidor aux = new Repartidor();
+                aux.nombre = db_usuarios.manboss_usuarios.Where(x => x.id == mandadero.repartidor).Select(x => x.nombre).FirstOrDefault();
+                aux.latitud = mandadero.latitud;
+                aux.longitud = mandadero.longitud;
+                mandaderos.Add(aux);
+            }
+            ViewBag.mandaderos = mandaderos;
             return View();
         }
     }

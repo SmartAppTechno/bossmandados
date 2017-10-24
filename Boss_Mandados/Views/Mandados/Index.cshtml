@@ -4,14 +4,19 @@
 <div class="tabs-container">
     <div class="tabs-left">
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#espera">En Espera</a></li>
+            <li class="active"><a data-toggle="tab" href="#mapa">Mapa</a></li>
+            <li><a data-toggle="tab" href="#espera">En Espera</a></li>
             <li><a data-toggle="tab" href="#asignado">Asignado</a></li>
             <li><a data-toggle="tab" href="#proceso">En Proceso</a></li>
             <li><a data-toggle="tab" href="#entregado">Entregado</a></li>
-            <li><a data-toggle="tab" href="#mapa">Mapa</a></li>
         </ul>
         <div class="tab-content">
-            <div id="espera" class="tab-pane active">
+            <div id="mapa" class="tab-pane active">
+                <div class="panel-body">
+                    <div id="mapa_mandados" style="width: 100%; height: 500px"></div>
+                </div>
+            </div>
+            <div id="espera" class="tab-pane">
                 <div class="panel-body">
                     <div class="wrapper-content">
                         <div class="ibox-content">
@@ -199,84 +204,39 @@
                     </div>
                 </div>
             </div>
-            <div id="mapa" class="tab-pane">
-                <div class="panel-body">
-                    <div id="map_canvas" style="height: 550px;"></div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
-
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8nWW1F1b2-oI5KXN1ito-gXtABMMthhA&callback=initMap" type="text/javascript"></script>
-
-<style>
-    #map_canvas img {
-        max-width: none;
-    }
-    .infoDiv {
-        height: 200px;
-        width: 300px;
-        -webkit-user-select: none;
-        background-color: white;
-    }
-</style>
-
-<script type="text/javascript">
-    // Where all the fun happens
-    function initMap() {
-
-        // Google has tweaked their interface somewhat - this tells the api to use that new UI
-        google.maps.visualRefresh = true;
-        var Tunisie = new google.maps.LatLng(36.81881, 10.16596);
-
-        // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
-        var mapOptions = {
-            zoom: 8,
-            center: Tunisie,
-            mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
-        };
-
-        // This makes the div with id "map_canvas" a google map
-        var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-
-        // a sample list of JSON encoded data of places to visit in Tunisia
-        // you can either make up a JSON list server side, or call it from a controller using JSONResult
-        var data = [
-                  { "Id": 1, "PlaceName": "Zaghouan", "GeoLong": "36.401081", "GeoLat": "10.16596" },
-                  { "Id": 2, "PlaceName": "Hammamet ", "GeoLong": "36.4", "GeoLat": "10.616667" },
-                  { "Id": 3, "PlaceName": "Sousse", "GeoLong": "35.8329809", "GeoLat": "10.63875" },
-                  { "Id": 4, "PlaceName": "Sfax", "GeoLong": "34.745159", "GeoLat": "10.7613" }
-               ];
-
-        // Using the JQuery "each" selector to iterate through the JSON list and drop marker pins
-        $.each(data, function (i, item) {
-            var marker = new google.maps.Marker({
-                'position': new google.maps.LatLng(item.GeoLong, item.GeoLat),
-                'map': map,
-                'title': item.PlaceName
-            });
-
-            // Make the marker-pin blue!
-            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
-
-            // put in some information about each json object - in this case, the opening hours.
-            var infowindow = new google.maps.InfoWindow({
-                content: "<div class='infoDiv'><h2>" + item.PlaceName + "</div></div>"
-            });
-
-            // finally hook up an "OnClick" listener to the map so it pops up out info-window when the marker-pin is clicked!
-            google.maps.event.addListener(marker, 'click', function () {
-                infowindow.open(map, marker);
-            });
-
-        })
-    }
-</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8nWW1F1b2-oI5KXN1ito-gXtABMMthhA"></script>
 <script>
-$(document).ready(function () {
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
+    var markers = @Html.Raw(Json.Encode(@ViewBag.mandaderos));
+    window.onload = function () {
+        var mapOptions = {
+            center: new google.maps.LatLng(markers[0].latitud, markers[0].longitud),
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var infoWindow = new google.maps.InfoWindow();
+        var map = new google.maps.Map(document.getElementById("mapa_mandados"), mapOptions);
+        for (i = 0; i < markers.length; i++) {
+            var data = markers[i];
+            var myLatlng = new google.maps.LatLng(data.latitud, data.longitud);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: data.nombre
+            });
+            (function (marker, data) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    infoWindow.setContent(data.nombre);
+                    infoWindow.open(map, marker);
+                });
+            })(marker, data);
+        }
+    }
+    $(document).ready(function () {
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
+        });
     });
-});
 </script>
