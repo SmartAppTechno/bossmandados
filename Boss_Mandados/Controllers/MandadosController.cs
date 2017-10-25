@@ -30,6 +30,19 @@ namespace Boss_Mandados.Controllers
             public double longitud;
         }
 
+        public struct Lugar
+        {
+            public double latitud;
+            public double longitud;
+            public string comentarios;
+        }
+
+        public struct Ruta
+        {
+            public int mandado;
+            public List<Lugar> puntos;
+        }
+
         // GET: Mandados
         public ActionResult Index()
         {
@@ -97,6 +110,29 @@ namespace Boss_Mandados.Controllers
                 mandaderos.Add(aux);
             }
             ViewBag.mandaderos = mandaderos;
+            //Rutas de los Mandados
+            List<Ruta> rutas = new List<Ruta>();
+            var rutas_db = db_rutas.manboss_mandados_rutas.ToList();
+            var mandados_id = db_rutas.manboss_mandados_rutas.Select(x => x.mandado).Distinct().ToList();
+            foreach(var mandado in mandados_id)
+            {
+                Ruta aux = new Ruta();
+                aux.mandado = mandado;
+                aux.puntos = new List<Lugar>();
+                foreach (var punto in rutas_db)
+                {
+                    if(punto.mandado == aux.mandado)
+                    {
+                        Lugar temp = new Lugar();
+                        temp.latitud = punto.latitud;
+                        temp.longitud = punto.longitud;
+                        temp.comentarios = punto.comentarios;
+                        aux.puntos.Add(temp);
+                    }
+                }
+                rutas.Add(aux);
+            }
+            ViewBag.rutas = rutas;
             return View();
         }
     }
