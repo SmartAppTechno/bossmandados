@@ -213,7 +213,7 @@
     var rutas = @Html.Raw(Json.Encode(@ViewBag.rutas));
     window.onload = function () {
         var mapOptions = {
-            center: 'auto', //new google.maps.LatLng(mandaderos[0].latitud, mandaderos[0].longitud),
+            center: 'auto',
             zoom: 8,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
