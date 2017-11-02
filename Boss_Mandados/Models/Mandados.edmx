@@ -12,13 +12,13 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="estado" Type="int" Nullable="false" />
           <Property Name="cliente" Type="int" Nullable="false" />
-          <Property Name="repartidor" Type="int" Nullable="false" />
           <Property Name="total" Type="float" Nullable="false" />
           <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="tipo_pago" Type="int" Nullable="false" />
+          <Property Name="cuenta_pendiente" Type="int" Nullable="false" />
+          <Property Name="repartidor" Type="int" />
           <Property Name="tiempo_trayecto" Type="datetime" />
           <Property Name="tiempo_total" Type="datetime" />
-          <Property Name="cuenta_pendiente" Type="int" Nullable="false" />
-          <Property Name="tipo_pago" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MandadosModelStoreContainer">
           <EntitySet Name="manboss_mandados" EntityType="Self.manboss_mandados" Schema="dbo" store:Type="Tables" />
@@ -34,7 +34,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="estado" Type="Int32" Nullable="false" />
           <Property Name="cliente" Type="Int32" Nullable="false" />
-          <Property Name="repartidor" Type="Int32" Nullable="false" />
+          <Property Name="repartidor" Type="Int32" />
           <Property Name="total" Type="Double" Nullable="false" />
           <Property Name="tiempo_trayecto" Type="DateTime" Precision="3" />
           <Property Name="tiempo_total" Type="DateTime" Precision="3" />

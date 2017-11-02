@@ -17,7 +17,7 @@ namespace Boss_Mandados.Models
         public int id { get; set; }
         public int estado { get; set; }
         public int cliente { get; set; }
-        public int repartidor { get; set; }
+        public Nullable<int> repartidor { get; set; }
         public double total { get; set; }
         public Nullable<System.DateTime> tiempo_trayecto { get; set; }
         public Nullable<System.DateTime> tiempo_total { get; set; }
