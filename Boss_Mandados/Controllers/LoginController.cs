@@ -3,15 +3,27 @@ using System.Web.Mvc;
 using Boss_Mandados.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Boss_Mandados.Controllers
 {
+    public struct Ruta
+    {
+        public int id_servicio;
+        public string servicio;
+        public float latitud;
+        public float longitud;
+        public string comentarios;
+    }
+
+
     public class LoginController : Controller
     {
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Iniciar_Sesion(manboss_usuarios Login)
         {
@@ -38,6 +50,8 @@ namespace Boss_Mandados.Controllers
                     Session["nombre_usuario"] = usuario_info.nombre;
                     Session["rol_usuario"] = usuario_info.rol;
                     Session["rolnombre_usuario"] = rol_info.nombre;
+                    List<Ruta> rutas = new List<Ruta>();
+                    Session["rutas_mandados"] = rutas;
                     return RedirectToAction("Index", "Panel");
                 }
                 else

@@ -15,8 +15,8 @@
           <Property Name="repartidor" Type="int" Nullable="false" />
           <Property Name="total" Type="float" Nullable="false" />
           <Property Name="fecha" Type="datetime" Nullable="false" />
-          <Property Name="tiempo_trayecto" Type="datetime" Nullable="false" />
-          <Property Name="tiempo_total" Type="datetime" Nullable="false" />
+          <Property Name="tiempo_trayecto" Type="datetime" />
+          <Property Name="tiempo_total" Type="datetime" />
           <Property Name="cuenta_pendiente" Type="int" Nullable="false" />
           <Property Name="tipo_pago" Type="int" Nullable="false" />
         </EntityType>
@@ -36,8 +36,8 @@
           <Property Name="cliente" Type="Int32" Nullable="false" />
           <Property Name="repartidor" Type="Int32" Nullable="false" />
           <Property Name="total" Type="Double" Nullable="false" />
-          <Property Name="tiempo_trayecto" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="tiempo_total" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tiempo_trayecto" Type="DateTime" Precision="3" />
+          <Property Name="tiempo_total" Type="DateTime" Precision="3" />
           <Property Name="cuenta_pendiente" Type="Int32" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="tipo_pago" Type="Int32" Nullable="false" />

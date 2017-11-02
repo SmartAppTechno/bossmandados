@@ -413,6 +413,7 @@ ul.nav-second-level {
     margin: 14px 5px 5px 20px;
     font-size: 14px;
     float: left;
+    width:40px !important;
 }
 
 .navbar-form-custom {
@@ -976,7 +977,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     background-color: #40D284;
     border-color: #40D284;
     color: #FFFFFF;
-    width:50px;
+    width:100px;
 }
 
     .btn-primary:hover,

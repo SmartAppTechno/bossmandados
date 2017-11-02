@@ -56,6 +56,9 @@
                     @if (permisos.Contains(3))
                     {
                     <li>
+                        <a href="@Url.Action("Index","CrearMandado")"><i class="fa fa-file-o"></i> <span class="nav-label">Nuevo Mandado</span></a>
+                    </li>
+                    <li>
                         <a href="@Url.Action("Index","Mandados")"><i class="fa fa-files-o"></i> <span class="nav-label">Mandados</span></a>
                     </li>
                     }
