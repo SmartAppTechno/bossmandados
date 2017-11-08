@@ -74,6 +74,35 @@
         </div>
     </div>
     <div class="col-md-6">
+        <div class="wrapper-content">
+            <div class="ibox-content form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Nombre</label>
+                    <div class="col-sm-10"><input id="nombre" type="text" class="form-control"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Correo</label>
+                    <div class="col-sm-10"><input id="correo" type="text" class="form-control"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Teléfono</label>
+                    <div class="col-sm-10"><input id="telefono" type="text" class="form-control"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Total</label>
+                    <div class="col-sm-10"><input id="total" type="number" step="0.01" min="0.00" class="form-control"></div>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button class="btn btn-primary" id="crear_mandado" type="submit">Crear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -93,6 +122,26 @@
             success: function (mensaje) {
                 console.log(mensaje);
                 $("#tabla_rutas").load(window.location + " #tabla_rutas");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(thrownError);
+            }
+        });
+    });
+    $('#crear_mandado').click(function () {
+        var nombre = $('#nombre').val();
+        var correo = $('#correo').val();
+        var telefono = $('#telefono').val();
+        var total = $('#total').val();
+
+        $.ajax({
+            url: '/CrearMandado/Agregar_Mandado',
+            data: { 'nombre': nombre, 'correo': correo, 'telefono': telefono, 'total': total },
+            type: "post",
+            cache: false,
+            success: function (mensaje) {
+                console.log(mensaje);
+                window.location.href = "Mandados";
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(thrownError);
