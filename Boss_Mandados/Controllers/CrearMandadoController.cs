@@ -92,7 +92,7 @@ namespace Boss_Mandados.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agregar_Mandado(string nombre, string correo, string telefono, float total)
+        public ActionResult Agregar_Mandado(string nombre, string correo, string telefono)
         {
             //Crear Cliente
             manboss_clientes nuevo_cliente = new manboss_clientes();
@@ -106,7 +106,6 @@ namespace Boss_Mandados.Controllers
             manboss_mandados nuevo_mandado = new manboss_mandados();
             nuevo_mandado.estado = 1;
             nuevo_mandado.cliente = cliente_id;
-            nuevo_mandado.total = total;
             nuevo_mandado.fecha = DateTime.Now;
             nuevo_mandado.tipo_pago = 0;
             nuevo_mandado.cuenta_pendiente = 0;
