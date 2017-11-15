@@ -14,7 +14,11 @@
           <Property Name="servicio" Type="int" Nullable="false" />
           <Property Name="latitud" Type="float" Nullable="false" />
           <Property Name="longitud" Type="float" Nullable="false" />
-          <Property Name="comentarios" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="calle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="numero" Type="int" Nullable="false" />
+          <Property Name="comentarios" Type="ntext" Nullable="false" />
+          <Property Name="tamanio" Type="int" />
+          <Property Name="peso" Type="float" />
         </EntityType>
         <EntityContainer Name="MandadosRutasModelStoreContainer">
           <EntitySet Name="manboss_mandados_rutas" EntityType="Self.manboss_mandados_rutas" Schema="dbo" store:Type="Tables" />
@@ -33,6 +37,10 @@
           <Property Name="longitud" Type="Double" Nullable="false" />
           <Property Name="servicio" Type="Int32" Nullable="false" />
           <Property Name="comentarios" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="calle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="numero" Type="Int32" Nullable="false" />
+          <Property Name="tamanio" Type="Int32" />
+          <Property Name="peso" Type="Double" />
         </EntityType>
         <EntityContainer Name="MandadosRutasEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="manboss_mandados_rutas" EntityType="Self.manboss_mandados_rutas" />
@@ -46,6 +54,10 @@
           <EntitySetMapping Name="manboss_mandados_rutas">
             <EntityTypeMapping TypeName="MandadosRutasModel.manboss_mandados_rutas">
               <MappingFragment StoreEntitySet="manboss_mandados_rutas">
+                <ScalarProperty Name="peso" ColumnName="peso" />
+                <ScalarProperty Name="tamanio" ColumnName="tamanio" />
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="calle" ColumnName="calle" />
                 <ScalarProperty Name="comentarios" ColumnName="comentarios" />
                 <ScalarProperty Name="servicio" ColumnName="servicio" />
                 <ScalarProperty Name="id" ColumnName="id" />

@@ -76,11 +76,13 @@ namespace Boss_Mandados.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agregar_Ruta(int servicio, float latitud, float longitud, string comentarios)
+        public ActionResult Agregar_Ruta(string calle,int numero,int servicio, float latitud, float longitud, string comentarios)
         {
             Ruta aux = new Ruta();
             aux.id_servicio = servicio;
             aux.servicio = db_servicios.manboss_servicios.Where(x => x.id == servicio).Select(x => x.nombre).FirstOrDefault();
+            aux.calle = calle;
+            aux.numero = numero;
             aux.latitud = latitud;
             aux.longitud = longitud;
             aux.comentarios = comentarios;
@@ -119,6 +121,8 @@ namespace Boss_Mandados.Controllers
                 manboss_mandados_rutas nueva_ruta = new manboss_mandados_rutas();
                 nueva_ruta.mandado = mandado_id;
                 nueva_ruta.servicio = ruta.id_servicio;
+                nueva_ruta.calle = ruta.calle;
+                nueva_ruta.numero = ruta.numero;
                 nueva_ruta.latitud = ruta.latitud;
                 nueva_ruta.longitud = ruta.longitud;
                 nueva_ruta.comentarios = ruta.comentarios;

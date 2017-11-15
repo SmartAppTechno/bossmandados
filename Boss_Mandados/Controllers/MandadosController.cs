@@ -11,6 +11,7 @@ namespace Boss_Mandados.Controllers
     {
         private RepartidoresEntities db_repartidores = new RepartidoresEntities();
         private UsuariosEntities db_usuarios = new UsuariosEntities();
+        private ClientesEntities db_clientes = new ClientesEntities();
         private MandadosEntities db_mandados = new MandadosEntities();
         private MandadosEstadosEntities db_estados = new MandadosEstadosEntities();
         private MandadosRutasEntities db_rutas = new MandadosRutasEntities();
@@ -32,6 +33,7 @@ namespace Boss_Mandados.Controllers
 
         public struct Lugar
         {
+            public int mandado;
             public double latitud;
             public double longitud;
             public string comentarios;
@@ -52,7 +54,7 @@ namespace Boss_Mandados.Controllers
             foreach (var mandado in espera_db)
             {
                 Mandado aux = new Mandado();
-                aux.cliente = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
+                aux.cliente = db_clientes.manboss_clientes.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
                 aux.repartidor = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.repartidor).Select(x => x.nombre).FirstOrDefault();
                 aux.total = mandado.total;
                 aux.fecha = mandado.fecha.ToString("dd/MM/yyyy");
@@ -65,7 +67,7 @@ namespace Boss_Mandados.Controllers
             foreach (var mandado in asignado_db)
             {
                 Mandado aux = new Mandado();
-                aux.cliente = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
+                aux.cliente = db_clientes.manboss_clientes.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
                 aux.repartidor = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.repartidor).Select(x => x.nombre).FirstOrDefault();
                 aux.total = mandado.total;
                 aux.fecha = mandado.fecha.ToString("dd/MM/yyyy");
@@ -78,7 +80,7 @@ namespace Boss_Mandados.Controllers
             foreach (var mandado in proceso_db)
             {
                 Mandado aux = new Mandado();
-                aux.cliente = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
+                aux.cliente = db_clientes.manboss_clientes.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
                 aux.repartidor = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.repartidor).Select(x => x.nombre).FirstOrDefault();
                 aux.total = mandado.total;
                 aux.fecha = mandado.fecha.ToString("dd/MM/yyyy");
@@ -91,7 +93,7 @@ namespace Boss_Mandados.Controllers
             foreach (var mandado in entregado_db)
             {
                 Mandado aux = new Mandado();
-                aux.cliente = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
+                aux.cliente = db_clientes.manboss_clientes.Where(x => x.id == mandado.cliente).Select(x => x.nombre).FirstOrDefault();
                 aux.repartidor = db_usuarios.manboss_usuarios.Where(x => x.id == mandado.repartidor).Select(x => x.nombre).FirstOrDefault();
                 aux.total = mandado.total;
                 aux.fecha = mandado.fecha.ToString("dd/MM/yyyy");
@@ -117,20 +119,25 @@ namespace Boss_Mandados.Controllers
             foreach(var mandado in mandados_id)
             {
                 Ruta aux = new Ruta();
-                aux.mandado = mandado;
-                aux.puntos = new List<Lugar>();
-                foreach (var punto in rutas_db)
+                int estado_actual = db_mandados.manboss_mandados.Where(x => x.id == mandado).Select(x => x.estado).FirstOrDefault();
+                if(estado_actual == 3)
                 {
-                    if(punto.mandado == aux.mandado)
+                    aux.mandado = mandado;
+                    aux.puntos = new List<Lugar>();
+                    foreach (var punto in rutas_db)
                     {
-                        Lugar temp = new Lugar();
-                        temp.latitud = punto.latitud;
-                        temp.longitud = punto.longitud;
-                        temp.comentarios = punto.comentarios;
-                        aux.puntos.Add(temp);
+                        if (punto.mandado == aux.mandado)
+                        {
+                            Lugar temp = new Lugar();
+                            temp.mandado = punto.mandado;
+                            temp.latitud = punto.latitud;
+                            temp.longitud = punto.longitud;
+                            temp.comentarios = punto.comentarios;
+                            aux.puntos.Add(temp);
+                        }
                     }
+                    rutas.Add(aux);
                 }
-                rutas.Add(aux);
             }
             ViewBag.rutas = rutas;
             return View();

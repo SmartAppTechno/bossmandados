@@ -20,5 +20,9 @@ namespace Boss_Mandados.Models
         public double longitud { get; set; }
         public int servicio { get; set; }
         public string comentarios { get; set; }
+        public string calle { get; set; }
+        public int numero { get; set; }
+        public Nullable<int> tamanio { get; set; }
+        public Nullable<double> peso { get; set; }
     }
 }

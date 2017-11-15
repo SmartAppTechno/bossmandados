@@ -11,6 +11,8 @@ namespace Boss_Mandados.Controllers
     {
         public int id_servicio;
         public string servicio;
+        public string calle;
+        public int numero;
         public float latitud;
         public float longitud;
         public string comentarios;

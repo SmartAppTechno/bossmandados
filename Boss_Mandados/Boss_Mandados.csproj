@@ -501,6 +501,8 @@
     <Content Include="Images\green.png" />
     <Content Include="Images\header-profile.png" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\mandadero.png" />
+    <Content Include="Images\mandado.png" />
     <Content Include="Models\Chat.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Chat.edmx</DependentUpon>

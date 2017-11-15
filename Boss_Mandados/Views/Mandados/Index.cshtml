@@ -213,7 +213,7 @@
     var rutas = @Html.Raw(Json.Encode(@ViewBag.rutas));
     window.onload = function () {
         var mapOptions = {
-            center: 'auto',
+            //center: 'auto',
             zoom: 8,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -225,7 +225,8 @@
             var myLatlng = new google.maps.LatLng(data.latitud, data.longitud);
             var marker = new google.maps.Marker({
                 position: myLatlng,
-                map: map
+                map: map,
+                icon: 'http://localhost:50446/Images/mandadero.png'
             });
             (function (marker, data) {
                 google.maps.event.addListener(marker, "click", function (e) {
@@ -236,18 +237,20 @@
         }
         //Rutas
         var bounds = new google.maps.LatLngBounds();
-        var colores = ["green", "blue", "yellow", "rose","black"];
+        var colores = ["#acfcee", "#aafbed", "#a9f9eb", "#a7f8ea", "#a5f6e9", "#a4f5e7", "#a2f3e6", "#a0f2e5", "#9ff0e3", "#9defe2", "#9bede1", "#99ecdf", "#98eade", "#96e9dd", "#94e7db", "#93e6da", "#91e4d9", "#8fe3d7", "#8ee2d6", "#8ce0d5", "#8adfd3", "#89ddd2", "#87dcd1", "#85dacf", "#84d9ce", "#82d7cd", "#80d6cb", "#7ed4ca", "#7dd3c9", "#7bd1c7", "#79d0c6", "#78cec5", "#76cdc3", "#74cbc2", "#73cac1", "#71c9bf", "#6fc7be", "#6ec6bd", "#6cc4bb", "#6ac3ba", "#69c1b9", "#67c0b7", "#65beb6", "#63bdb5", "#62bbb3", "#60bab2", "#5eb8b1", "#5db7af", "#5bb5ae", "#59b4ad", "#58b2ab", "#56b1aa", "#54b0a9", "#53aea7", "#51ada6", "#4faba5", "#4eaaa3", "#4ca8a2", "#4aa7a1", "#49a59f", "#47a49e", "#45a29d", "#43a19b", "#429f9a", "#409e99", "#3e9c97", "#3d9b96", "#3b9995", "#399893", "#389792", "#369591", "#34948f", "#33928e", "#31918d", "#2f8f8b", "#2e8e8a", "#2c8c89", "#2a8b87", "#288986", "#278885", "#258683", "#238582", "#228381", "#20827f", "#1e807e", "#1d7f7d", "#1b7e7b", "#197c7a", "#187b79", "#167977", "#147876", "#137675", "#117573", "#0f7372", "#0d7271", "#0c706f", "#0a6f6e", "#086d6d", "#076c6b", "#056a6a", "#036969","#006666"];
         for (i = 0; i < rutas.length; i++) {
             var puntos = rutas[i].puntos;
+            var mandado_id = rutas[i].mandado;
             for (j = 0; j < puntos.length; j++) {
                 var data = puntos[j];
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(data.latitud, data.longitud),
-                    map: map
+                    map: map,
+                    icon: 'http://localhost:50446/Images/mandado.png'
                 });
                 (function (marker, data) {
                     google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent(data.comentarios);
+                        infoWindow.setContent("Mandado #" + data.mandado + "<br>" + data.comentarios);
                         infoWindow.open(map, marker);
                     });
                 })(marker, data);
