@@ -35,6 +35,12 @@ namespace Boss_Mandados.Controllers
             public string nombre;
         }
 
+        public struct Cliente
+        {
+            public int id;
+            public string nombre;
+        }
+
         // GET: CrearMandado
         public ActionResult Index()
         {
@@ -71,6 +77,18 @@ namespace Boss_Mandados.Controllers
                 estados.Add(aux);
             }
             ViewBag.estados = estados;
+            //Clientes
+            List<Cliente> clientes = new List<Cliente>();
+            var clientes_db = db_clientes.manboss_clientes.ToList();
+            foreach (var cliente in clientes_db)
+            {
+                Cliente aux = new Cliente();
+                aux.id = cliente.id;
+                aux.nombre = cliente.nombre;
+                clientes.Add(aux);
+            }
+            ViewBag.clientes = clientes;
+            //Rutas
             ViewBag.rutas = Session["rutas_mandados"];
             return View();
         }
@@ -94,7 +112,7 @@ namespace Boss_Mandados.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agregar_Mandado(string nombre, string correo, string telefono)
+        public ActionResult Agregar_Mandado_Nuevo(string nombre, string correo, string telefono)
         {
             //Crear Cliente
             manboss_clientes nuevo_cliente = new manboss_clientes();
@@ -108,6 +126,37 @@ namespace Boss_Mandados.Controllers
             manboss_mandados nuevo_mandado = new manboss_mandados();
             nuevo_mandado.estado = 1;
             nuevo_mandado.cliente = cliente_id;
+            nuevo_mandado.fecha = DateTime.Now;
+            nuevo_mandado.tipo_pago = 0;
+            nuevo_mandado.cuenta_pendiente = 0;
+            db_mandados.manboss_mandados.Add(nuevo_mandado);
+            db_mandados.SaveChanges();
+            int mandado_id = nuevo_mandado.id;
+            //Crear Rutas del Mandado
+            List<Ruta> rutas = (List<Ruta>)Session["rutas_mandados"];
+            foreach (var ruta in rutas)
+            {
+                manboss_mandados_rutas nueva_ruta = new manboss_mandados_rutas();
+                nueva_ruta.mandado = mandado_id;
+                nueva_ruta.servicio = ruta.id_servicio;
+                nueva_ruta.calle = ruta.calle;
+                nueva_ruta.numero = ruta.numero;
+                nueva_ruta.latitud = ruta.latitud;
+                nueva_ruta.longitud = ruta.longitud;
+                nueva_ruta.comentarios = ruta.comentarios;
+                db_rutas.manboss_mandados_rutas.Add(nueva_ruta);
+                db_rutas.SaveChanges();
+            }
+            return Content("exito");
+        }
+
+        [HttpPost]
+        public ActionResult Agregar_Mandado_Existente(int cliente)
+        {
+            //Crear Mandado
+            manboss_mandados nuevo_mandado = new manboss_mandados();
+            nuevo_mandado.estado = 1;
+            nuevo_mandado.cliente = cliente;
             nuevo_mandado.fecha = DateTime.Now;
             nuevo_mandado.tipo_pago = 0;
             nuevo_mandado.cuenta_pendiente = 0;

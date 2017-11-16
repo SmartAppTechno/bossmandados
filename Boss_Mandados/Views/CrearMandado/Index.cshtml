@@ -8,30 +8,29 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
         <div class="wrapper-content">
             <div class="ibox-content form-horizontal">
                 <h2>Agregar Ruta</h2>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Dirección</label>
-                    <div class="col-sm-10"><input id="direccion" type="text" class="form-control"></div>
+                    <label class="col-sm-3 control-label">Dirección</label>
+                    <div class="col-sm-9"><input id="direccion" type="text" class="form-control"></div>
                 </div>
                 <input type="hidden" id="latitud" value="">
                 <input type="hidden" id="longitud" value="">
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Calle</label>
-                    <div class="col-sm-10"><input id="calle" type="text" class="form-control"></div>
+                    <label class="col-sm-3 control-label">Calle</label>
+                    <div class="col-sm-9"><input id="calle" type="text" class="form-control"></div>
                 </div>
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Número</label>
-                    <div class="col-sm-10"><input id="numero" type="number" min="0" step="1" class="form-control"></div>
+                    <label class="col-sm-3 control-label">Número</label>
+                    <div class="col-sm-9"><input id="numero" type="number" min="0" step="1" class="form-control"></div>
                 </div>
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Servicio</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-12">
                         <select class="form-control m-b" id="servicio">
                             <option value="">Selecciona el servicio</option>
                             @foreach (var item in ViewBag.servicios)
@@ -43,8 +42,8 @@
                 </div>
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Comentarios</label>
-                    <div class="col-sm-10"><textarea id="textarea" class="comentarios"></textarea></div>
+                    <label class="col-sm-3 control-label">Comentarios</label>
+                    <div class="col-sm-9"><textarea id="textarea" class="comentarios"></textarea></div>
                 </div>
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
@@ -55,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-7">
         <div class="wrapper-content">
             <div class="ibox-content">
                 <h2>Rutas del Mandado</h2>
@@ -86,27 +85,55 @@
                 </div>
             </div>
         </div>
-        <div class="wrapper-content">
-            <div class="ibox-content form-horizontal">
-                <h2>Nuevo Cliente</h2>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Nombre</label>
-                    <div class="col-sm-10"><input id="nombre" type="text" class="form-control"></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="wrapper-content">
+                    <div class="ibox-content form-horizontal">
+                        <h2>Nuevo Cliente</h2>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Nombre</label>
+                            <div class="col-sm-9"><input id="nombre" type="text" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Correo</label>
+                            <div class="col-sm-9"><input id="correo" type="text" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Teléfono</label>
+                            <div class="col-sm-9"><input id="telefono" type="text" class="form-control"></div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" id="crear_mandado_nuevo" type="submit">Crear</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Correo</label>
-                    <div class="col-sm-10"><input id="correo" type="text" class="form-control"></div>
-                </div>
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Teléfono</label>
-                    <div class="col-sm-10"><input id="telefono" type="text" class="form-control"></div>
-                </div>
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <div class="col-sm-4 col-sm-offset-2">
-                        <button class="btn btn-primary" id="crear_mandado" type="submit">Crear</button>
+            </div>
+            <div class="col-md-6">
+                <div class="wrapper-content">
+                    <div class="ibox-content form-horizontal">
+                        <h2>Cliente Existente</h2>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <select class="form-control m-b" id="cliente">
+                                    <option value="">Selecciona el cliente</option>
+                                    @foreach (var item in ViewBag.clientes)
+                                    {
+                                        <option value="@item.id">@item.nombre</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" id="crear_mandado_existente" type="submit">Crear</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -128,31 +155,47 @@
             type: "post",
             cache: false,
             success: function (mensaje) {
-                console.log(mensaje);
+                //console.log(mensaje);
                 $("#tabla_rutas").load(window.location + " #tabla_rutas");
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                console.log(thrownError);
+                //console.log(thrownError);
             }
         });
     });
-    $('#crear_mandado').click(function () {
+    $('#crear_mandado_nuevo').click(function () {
         var nombre = $('#nombre').val();
         var correo = $('#correo').val();
         var telefono = $('#telefono').val();
-        var total = $('#total').val();
 
         $.ajax({
-            url: '/CrearMandado/Agregar_Mandado',
-            data: { 'nombre': nombre, 'correo': correo, 'telefono': telefono, 'total': total },
+            url: '/CrearMandado/Agregar_Mandado_Nuevo',
+            data: { 'nombre': nombre, 'correo': correo, 'telefono': telefono},
             type: "post",
             cache: false,
             success: function (mensaje) {
-                console.log(mensaje);
+                //console.log(mensaje);
                 window.location.href = "Mandados";
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                console.log(thrownError);
+                //console.log(thrownError);
+            }
+        });
+    });
+    $('#crear_mandado_existente').click(function () {
+        var cliente = $('#cliente').val();
+
+        $.ajax({
+            url: '/CrearMandado/Agregar_Mandado_Existente',
+            data: { 'cliente': cliente },
+            type: "post",
+            cache: false,
+            success: function (mensaje) {
+                //console.log(mensaje);
+                window.location.href = "Mandados";
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                //console.log(thrownError);
             }
         });
     });
