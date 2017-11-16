@@ -893,6 +893,7 @@
     <Content Include="Views\Reportes\Comisiones.cshtml" />
     <Content Include="Views\Mandados\Index.cshtml" />
     <Content Include="Views\CrearMandado\Index.cshtml" />
+    <Content Include="Views\Mandados\Mandado_Ruta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

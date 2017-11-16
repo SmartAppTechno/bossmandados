@@ -281,7 +281,6 @@
                     var destino = puntos[j + 1];
                     var startPt = new google.maps.LatLng(data.latitud, data.longitud);
                     var endPt = new google.maps.LatLng(destino.latitud, destino.longitud);
-                    //calcRoute(startPt, endPt, i);
                     getdirections(startPt, endPt);
                     bounds.extend(startPt);
                     bounds.extend(endPt);
@@ -310,15 +309,6 @@
                 }
             );
         }
-        /*function calcRoute(source, destination,num) {
-            var polyline = new google.maps.Polyline({
-                path: [source, destination],
-                strokeColor: colores[num % colores.length],
-                strokeWeight: 2,
-                strokeOpacity: 1
-            });
-            polyline.setMap(map);
-        }*/
     }
     $(document).ready(function () {
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
