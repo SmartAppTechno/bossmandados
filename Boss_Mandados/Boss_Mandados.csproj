@@ -497,6 +497,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\green%402x.png" />
     <Content Include="Images\green.png" />
     <Content Include="Images\header-profile.png" />
@@ -668,7 +669,6 @@
     <Content Include="Styles\animate.css" />
     <Content Include="Styles\bootstrap.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Styles\bootstrap_date.css" />
     <Content Include="Styles\c3.min.css" />
@@ -733,15 +733,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\Menu.edmx">
@@ -855,6 +846,9 @@
     <Content Include="Models\Promociones.edmx.diagram">
       <DependentUpon>Promociones.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
     <Content Include="Views\Administradores\Create.cshtml" />
     <Content Include="Views\Administradores\Delete.cshtml" />
