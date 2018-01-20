@@ -107,13 +107,25 @@ namespace Boss_Mandados.Controllers
             double rating_total = 0;
             double rep = 0;
             double efectivo_total = 0;
+            double total = 0;
             foreach (var repartidor in repartidor_db)
             {
                 Repartidor aux = new Repartidor();
                 aux.nombre = db_usuarios.manboss_usuarios.Where(x => x.id == repartidor.repartidor).Select(x => x.nombre).FirstOrDefault();
-                double total = db_calificaciones.manboss_repartidores_calificaciones.Where(x => x.repartidor == repartidor.id).Sum(x => x.calificacion);
+                var total_db = db_calificaciones.manboss_repartidores_calificaciones.Where(x => x.repartidor == repartidor.id);
+                if (total_db.Any())
+                {
+                    total = total_db.Sum(x => x.calificacion);
+                }
                 int pedidos = db_calificaciones.manboss_repartidores_calificaciones.Where(x => x.repartidor == repartidor.id).Count();
-                aux.rating = total / pedidos;
+                if(total > 0 && pedidos > 0)
+                {
+                    aux.rating = total / pedidos;
+                }
+                else
+                {
+                    aux.rating = 0;
+                }
                 aux.efectivo = repartidor.efectivo;
                 efectivo_total += aux.efectivo;
                 rating_total += aux.rating;

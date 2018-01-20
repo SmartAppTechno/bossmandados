@@ -36,12 +36,24 @@ namespace Boss_Mandados.Controllers
         {
             List<Repartidor> repartidores = new List<Repartidor>();
             var rep_db = db.manboss_repartidores.ToList();
-            foreach(var repartidor in rep_db)
+            double total = 0;
+            foreach (var repartidor in rep_db)
             {
                 manboss_usuarios user = db_usuarios.manboss_usuarios.Where(x => x.id == repartidor.repartidor).FirstOrDefault();
-                double total = db_calificaciones.manboss_repartidores_calificaciones.Where(x => x.repartidor == repartidor.id).Sum(x=> x.calificacion);
+                var total_db = db_calificaciones.manboss_repartidores_calificaciones.Where(x => x.repartidor == repartidor.id);
+                if (total_db.Any())
+                {
+                    total = total_db.Sum(x => x.calificacion);
+                }
                 int pedidos = db_calificaciones.manboss_repartidores_calificaciones.Where(x => x.repartidor == repartidor.id).Count();
-                repartidor.rating = total / pedidos;
+                if (total > 0 && pedidos > 0)
+                {
+                    repartidor.rating = total / pedidos;
+                }
+                else
+                {
+                    repartidor.rating = 0;
+                }
                 Repartidor temporal = new Repartidor();
                 temporal.repartidor = repartidor;
                 temporal.usuario = user;

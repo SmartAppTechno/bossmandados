@@ -103,21 +103,21 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
         bottom: 8px;
         right: 8px;
         display: block;
-        font-family: 'Glyphicons Halflings';
+        font: normal normal normal 14px/1 FontAwesome;
         opacity: 0.5
     }
 
     table.dataTable thead .sorting:after {
         opacity: 0.2;
-        content: "\e150"
+        content: "\f07d"
     }
 
     table.dataTable thead .sorting_asc:after {
-        content: "\e155"
+        content: "\f106"
     }
 
     table.dataTable thead .sorting_desc:after {
-        content: "\e156"
+        content: "\f107"
     }
 
     table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {

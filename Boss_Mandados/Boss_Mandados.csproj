@@ -497,7 +497,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Images\green%402x.png" />
     <Content Include="Images\green.png" />
     <Content Include="Images\header-profile.png" />
@@ -846,9 +845,6 @@
     <Content Include="Models\Promociones.edmx.diagram">
       <DependentUpon>Promociones.edmx</DependentUpon>
     </Content>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
     <Content Include="Views\Administradores\Create.cshtml" />
     <Content Include="Views\Administradores\Delete.cshtml" />
