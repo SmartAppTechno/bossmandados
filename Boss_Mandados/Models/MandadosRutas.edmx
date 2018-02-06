@@ -19,6 +19,7 @@
           <Property Name="comentarios" Type="ntext" Nullable="false" />
           <Property Name="tamanio" Type="int" />
           <Property Name="peso" Type="float" />
+          <Property Name="terminado" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MandadosRutasModelStoreContainer">
           <EntitySet Name="manboss_mandados_rutas" EntityType="Self.manboss_mandados_rutas" Schema="dbo" store:Type="Tables" />
@@ -41,6 +42,7 @@
           <Property Name="numero" Type="Int32" Nullable="false" />
           <Property Name="tamanio" Type="Int32" />
           <Property Name="peso" Type="Double" />
+          <Property Name="terminado" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="MandadosRutasEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="manboss_mandados_rutas" EntityType="Self.manboss_mandados_rutas" />
@@ -54,6 +56,7 @@
           <EntitySetMapping Name="manboss_mandados_rutas">
             <EntityTypeMapping TypeName="MandadosRutasModel.manboss_mandados_rutas">
               <MappingFragment StoreEntitySet="manboss_mandados_rutas">
+                <ScalarProperty Name="terminado" ColumnName="terminado" />
                 <ScalarProperty Name="peso" ColumnName="peso" />
                 <ScalarProperty Name="tamanio" ColumnName="tamanio" />
                 <ScalarProperty Name="numero" ColumnName="numero" />

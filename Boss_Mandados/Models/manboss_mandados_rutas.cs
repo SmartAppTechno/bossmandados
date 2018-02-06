@@ -24,5 +24,6 @@ namespace Boss_Mandados.Models
         public int numero { get; set; }
         public Nullable<int> tamanio { get; set; }
         public Nullable<double> peso { get; set; }
+        public int terminado { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="@Url.Content("~/Styles/select2.min.css")" rel="stylesheet" />
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>Nuevo Mandado</h2>
@@ -106,6 +107,18 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
+                            <div class="col-sm-12">
+                                <select class="form-control m-b mandadero_nuevo" id="mandadero">
+                                    <option value="0">Selecciona el mandadero</option>
+                                    @foreach (var item in ViewBag.mandaderos)
+                                    {
+                                        <option value="@item.id">@item.nombre</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <button class="btn btn-primary" id="crear_mandado_nuevo" type="submit">Crear</button>
                             </div>
@@ -130,6 +143,18 @@
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
+                            <div class="col-sm-12">
+                                <select class="form-control m-b mandadero_existente" id="mandadero">
+                                    <option value="0">Selecciona el mandadero</option>
+                                    @foreach (var item in ViewBag.mandaderos)
+                                    {
+                                        <option value="@item.id">@item.nombre</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-2">
                                 <button class="btn btn-primary" id="crear_mandado_existente" type="submit">Crear</button>
                             </div>
@@ -143,7 +168,14 @@
 
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        $('#cliente').select2();
+        $('.mandadero_nuevo').select2();
+        $('.mandadero_existente').select2();
+    });
     $('#agregar_ruta').click(function () {
+        var calle = $('#calle').val();
+        var numero = $('#numero').val();
         var servicio = $('#servicio').val();
         var latitud = $('#latitud').val();
         var longitud = $('#longitud').val();
@@ -151,7 +183,7 @@
 
         $.ajax({
             url: '/CrearMandado/Agregar_Ruta',
-            data: { 'servicio': servicio, 'latitud': latitud, 'longitud': longitud, 'comentarios': comentarios },
+            data: { 'calle': calle, 'numero': numero, 'servicio': servicio, 'latitud': latitud, 'longitud': longitud, 'comentarios': comentarios },
             type: "post",
             cache: false,
             success: function (mensaje) {
@@ -167,10 +199,11 @@
         var nombre = $('#nombre').val();
         var correo = $('#correo').val();
         var telefono = $('#telefono').val();
+        var mandadero = $('#mandadero').val();
 
         $.ajax({
             url: '/CrearMandado/Agregar_Mandado_Nuevo',
-            data: { 'nombre': nombre, 'correo': correo, 'telefono': telefono},
+            data: { 'nombre': nombre, 'correo': correo, 'telefono': telefono, 'mandadero': mandadero },
             type: "post",
             cache: false,
             success: function (mensaje) {
@@ -184,10 +217,11 @@
     });
     $('#crear_mandado_existente').click(function () {
         var cliente = $('#cliente').val();
+        var mandadero = $('#mandadero').val();
 
         $.ajax({
             url: '/CrearMandado/Agregar_Mandado_Existente',
-            data: { 'cliente': cliente },
+            data: { 'cliente': cliente, 'mandadero': mandadero },
             type: "post",
             cache: false,
             success: function (mensaje) {
@@ -202,7 +236,7 @@
 </script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8nWW1F1b2-oI5KXN1ito-gXtABMMthhA&libraries=places"></script>
-
+<script src="@Url.Content("/Scripts/select2.min.js")"></script>
 <script>
     function init() {
         var input = document.getElementById('direccion');

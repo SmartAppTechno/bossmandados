@@ -662,6 +662,7 @@
     <Content Include="Scripts\inspinia.js" />
     <Content Include="Scripts\jasny.min.js" />
     <Content Include="Scripts\metismenu.js" />
+    <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\slimscroll.js" />
     <Content Include="Scripts\bossmandados.js" />
     <Content Include="Scripts\xml.js" />
@@ -676,6 +677,7 @@
     <Content Include="Styles\font-awesome.css" />
     <Content Include="Styles\icheck.css" />
     <Content Include="Styles\jasny.min.css" />
+    <Content Include="Styles\select2.min.css" />
     <Content Include="Styles\styles.css" />
     <Content Include="Models\RolUsuario.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -879,6 +881,7 @@
     <Content Include="Views\Reportes\Promociones.cshtml" />
     <Content Include="Views\Reportes\Repartidores.cshtml" />
     <Content Include="Views\Reportes\Mandados.cshtml" />
+    <None Include="Properties\PublishProfiles\AppBossMandados - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\AppBossMandados - Web Deploy.pubxml" />
     <Content Include="Views\Reportes\Comisiones.cshtml" />
     <Content Include="Views\Mandados\Index.cshtml" />
@@ -909,7 +912,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50446</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50446/</IISUrl>
+          <IISUrl>http://localhost:8080/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -45,16 +45,16 @@ namespace Boss_Mandados.Controllers
         public ActionResult Index()
         {
             //Repartidores
-            List<Repartidor> repartidores = new List<Repartidor>();
+            List<Repartidor> mandaderos = new List<Repartidor>();
             var repartidores_db = db_repartidores.manboss_repartidores.ToList();
             foreach (var repartidor in repartidores_db)
             {
                 Repartidor aux = new Repartidor();
                 aux.nombre = db_usuarios.manboss_usuarios.Where(x => x.id == repartidor.repartidor).Select(x => x.nombre).FirstOrDefault();
                 aux.id = repartidor.repartidor;
-                repartidores.Add(aux);
+                mandaderos.Add(aux);
             }
-            ViewBag.repartidores = repartidores;
+            ViewBag.mandaderos = mandaderos;
             //Servicios
             List<Servicio> servicios = new List<Servicio>();
             var servicios_db = db_servicios.manboss_servicios.ToList();
@@ -112,7 +112,7 @@ namespace Boss_Mandados.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agregar_Mandado_Nuevo(string nombre, string correo, string telefono)
+        public ActionResult Agregar_Mandado_Nuevo(string nombre, string correo, string telefono,int mandadero)
         {
             //Crear Cliente
             manboss_clientes nuevo_cliente = new manboss_clientes();
@@ -124,6 +124,10 @@ namespace Boss_Mandados.Controllers
             int cliente_id = nuevo_cliente.id;
             //Crear Mandado
             manboss_mandados nuevo_mandado = new manboss_mandados();
+            if(mandadero > 0)
+            {
+                nuevo_mandado.repartidor = mandadero;
+            }
             nuevo_mandado.estado = 1;
             nuevo_mandado.cliente = cliente_id;
             nuevo_mandado.fecha = DateTime.Now;
@@ -144,6 +148,7 @@ namespace Boss_Mandados.Controllers
                 nueva_ruta.latitud = ruta.latitud;
                 nueva_ruta.longitud = ruta.longitud;
                 nueva_ruta.comentarios = ruta.comentarios;
+                nueva_ruta.terminado = 0;
                 db_rutas.manboss_mandados_rutas.Add(nueva_ruta);
                 db_rutas.SaveChanges();
             }
@@ -151,10 +156,14 @@ namespace Boss_Mandados.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agregar_Mandado_Existente(int cliente)
+        public ActionResult Agregar_Mandado_Existente(int cliente, int mandadero)
         {
             //Crear Mandado
             manboss_mandados nuevo_mandado = new manboss_mandados();
+            if (mandadero > 0)
+            {
+                nuevo_mandado.repartidor = mandadero;
+            }
             nuevo_mandado.estado = 1;
             nuevo_mandado.cliente = cliente;
             nuevo_mandado.fecha = DateTime.Now;
@@ -175,6 +184,7 @@ namespace Boss_Mandados.Controllers
                 nueva_ruta.latitud = ruta.latitud;
                 nueva_ruta.longitud = ruta.longitud;
                 nueva_ruta.comentarios = ruta.comentarios;
+                nueva_ruta.terminado = 0;
                 db_rutas.manboss_mandados_rutas.Add(nueva_ruta);
                 db_rutas.SaveChanges();
             }
