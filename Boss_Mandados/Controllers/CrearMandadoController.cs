@@ -124,11 +124,15 @@ namespace Boss_Mandados.Controllers
             int cliente_id = nuevo_cliente.id;
             //Crear Mandado
             manboss_mandados nuevo_mandado = new manboss_mandados();
-            if(mandadero > 0)
+            if (mandadero > 0)
             {
                 nuevo_mandado.repartidor = mandadero;
+                nuevo_mandado.estado = 2;
             }
-            nuevo_mandado.estado = 1;
+            else
+            {
+                nuevo_mandado.estado = 1;
+            }
             nuevo_mandado.cliente = cliente_id;
             nuevo_mandado.fecha = DateTime.Now;
             nuevo_mandado.tipo_pago = 0;
@@ -163,8 +167,12 @@ namespace Boss_Mandados.Controllers
             if (mandadero > 0)
             {
                 nuevo_mandado.repartidor = mandadero;
+                nuevo_mandado.estado = 2;
             }
-            nuevo_mandado.estado = 1;
+            else
+            {
+                nuevo_mandado.estado = 1;
+            }
             nuevo_mandado.cliente = cliente;
             nuevo_mandado.fecha = DateTime.Now;
             nuevo_mandado.tipo_pago = 0;
