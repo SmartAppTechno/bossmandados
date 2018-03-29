@@ -110,7 +110,7 @@ namespace Boss_Mandados.Controllers
                 nuevo_usuario.usuario = usuario_form["usuario"];
                 nuevo_usuario.contrasenia = encrypt_pass(contrasenia_form + hash).ToLower();
                 nuevo_usuario.hash = hash;
-                nuevo_usuario.rol = 3;
+                nuevo_usuario.rol = 2;
                 db_usuarios.manboss_usuarios.Add(nuevo_usuario);
                 db_usuarios.SaveChanges();
                 //Crear el repartidor

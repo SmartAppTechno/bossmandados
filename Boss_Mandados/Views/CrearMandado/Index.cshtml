@@ -108,7 +108,7 @@
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <select class="form-control m-b mandadero_nuevo" id="mandadero">
+                                <select class="form-control m-b mandadero_nuevo" id="mandadero_nuevo">
                                     <option value="0">Selecciona el mandadero</option>
                                     @foreach (var item in ViewBag.mandaderos)
                                     {
@@ -144,7 +144,7 @@
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <select class="form-control m-b mandadero_existente" id="mandadero">
+                                <select class="form-control m-b mandadero_existente" id="mandadero_existente">
                                     <option value="0">Selecciona el mandadero</option>
                                     @foreach (var item in ViewBag.mandaderos)
                                     {
@@ -199,7 +199,7 @@
         var nombre = $('#nombre').val();
         var correo = $('#correo').val();
         var telefono = $('#telefono').val();
-        var mandadero = $('#mandadero').val();
+        var mandadero = $('#mandadero_nuevo option:selected').val();
 
         $.ajax({
             url: '/CrearMandado/Agregar_Mandado_Nuevo',
@@ -217,7 +217,7 @@
     });
     $('#crear_mandado_existente').click(function () {
         var cliente = $('#cliente').val();
-        var mandadero = $('#mandadero').val();
+        var mandadero = $('#mandadero_existente option:selected').val();
 
         $.ajax({
             url: '/CrearMandado/Agregar_Mandado_Existente',
