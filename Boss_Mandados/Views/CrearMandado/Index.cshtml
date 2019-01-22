@@ -182,7 +182,7 @@
         var comentarios = $('.comentarios').val();
 
         $.ajax({
-            url: '/CrearMandado/Agregar_Ruta',
+            url: window.location.pathname + '/Agregar_Ruta',
             data: { 'calle': calle, 'numero': numero, 'servicio': servicio, 'latitud': latitud, 'longitud': longitud, 'comentarios': comentarios },
             type: "post",
             cache: false,
@@ -203,7 +203,7 @@
         var mandadero = $('#mandadero_nuevo option:selected').val();
 
         $.ajax({
-            url: '/CrearMandado/Agregar_Mandado_Nuevo',
+            url: window.location.pathname + '/Agregar_Mandado_Nuevo',
             data: { 'nombre': nombre, 'correo': correo, 'telefono': telefono, 'mandadero': mandadero },
             type: "post",
             cache: false,
@@ -221,7 +221,7 @@
         var mandadero = $('#mandadero_existente option:selected').val();
 
         $.ajax({
-            url: '/CrearMandado/Agregar_Mandado_Existente',
+            url: window.location.pathname + '/Agregar_Mandado_Existente',
             data: { 'cliente': cliente, 'mandadero': mandadero },
             type: "post",
             cache: false,
