@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="RepartidoresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RepartidoresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="manboss_repartidores">
           <Key>
             <PropertyRef Name="id" />
@@ -15,7 +15,9 @@
           <Property Name="longitud" Type="float" Nullable="false" />
           <Property Name="rating" Type="float" Nullable="false" />
           <Property Name="efectivo" Type="float" Nullable="false" />
+          <Property Name="hora_inicio" Type="datetime" />
           <Property Name="estado" Type="int" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="RepartidoresModelStoreContainer">
           <EntitySet Name="manboss_repartidores" EntityType="Self.manboss_repartidores" Schema="dbo" store:Type="Tables" />
@@ -35,6 +37,8 @@
           <Property Name="rating" Type="Double" Nullable="false" />
           <Property Name="efectivo" Type="Double" Nullable="false" />
           <Property Name="estado" Type="Int32" Nullable="false" />
+          <Property Name="hora_inicio" Type="DateTime" Precision="3" />
+          <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="RepartidoresEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="manboss_repartidores" EntityType="Self.manboss_repartidores" />
@@ -48,6 +52,8 @@
           <EntitySetMapping Name="manboss_repartidores">
             <EntityTypeMapping TypeName="RepartidoresModel.manboss_repartidores">
               <MappingFragment StoreEntitySet="manboss_repartidores">
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="hora_inicio" ColumnName="hora_inicio" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="repartidor" ColumnName="repartidor" />

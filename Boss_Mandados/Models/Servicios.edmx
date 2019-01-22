@@ -4,26 +4,26 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ServiciosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ServiciosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="manboss_servicios">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="tarifa_base_ex" Type="float" Nullable="false" />
           <Property Name="costo_minuto_ex" Type="float" Nullable="false" />
           <Property Name="costo_km_ex" Type="float" Nullable="false" />
           <Property Name="tarifa_base_co" Type="float" Nullable="false" />
           <Property Name="costo_minuto_co" Type="float" Nullable="false" />
           <Property Name="costo_km_co" Type="float" Nullable="false" />
-          <Property Name="foto" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="foto" Type="varchar(max)" Nullable="false" />
+          <Property Name="ubicaciones" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ServiciosModelStoreContainer">
           <EntitySet Name="manboss_servicios" EntityType="Self.manboss_servicios" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ServiciosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -32,14 +32,15 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="tarifa_base_ex" Type="Double" Nullable="false" />
           <Property Name="costo_minuto_ex" Type="Double" Nullable="false" />
           <Property Name="costo_km_ex" Type="Double" Nullable="false" />
           <Property Name="tarifa_base_co" Type="Double" Nullable="false" />
           <Property Name="costo_minuto_co" Type="Double" Nullable="false" />
           <Property Name="costo_km_co" Type="Double" Nullable="false" />
-          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ubicaciones" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ServiciosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="manboss_servicios" EntityType="Self.manboss_servicios" />
@@ -53,6 +54,7 @@
           <EntitySetMapping Name="manboss_servicios">
             <EntityTypeMapping TypeName="ServiciosModel.manboss_servicios">
               <MappingFragment StoreEntitySet="manboss_servicios">
+                <ScalarProperty Name="ubicaciones" ColumnName="ubicaciones" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="tarifa_base_ex" ColumnName="tarifa_base_ex" />

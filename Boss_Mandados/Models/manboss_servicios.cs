@@ -23,5 +23,6 @@ namespace Boss_Mandados.Models
         public double costo_minuto_co { get; set; }
         public double costo_km_co { get; set; }
         public string foto { get; set; }
+        public int ubicaciones { get; set; }
     }
 }

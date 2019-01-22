@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ClientesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ClientesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="manboss_clientes">
           <Key>
             <PropertyRef Name="id" />
@@ -12,11 +12,13 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="correo" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="telefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="varchar" MaxLength="50" />
           <Property Name="red_social" Type="varchar" MaxLength="50" />
           <Property Name="direccion" Type="varchar" MaxLength="50" />
           <Property Name="latitud" Type="float" />
           <Property Name="longitud" Type="float" />
+          <Property Name="contrasenia" Type="varchar" MaxLength="50" />
+          <Property Name="hash" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="ClientesModelStoreContainer">
           <EntitySet Name="manboss_clientes" EntityType="Self.manboss_clientes" Schema="dbo" store:Type="Tables" />
@@ -34,9 +36,11 @@
           <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="latitud" Type="Double" />
           <Property Name="longitud" Type="Double" />
-          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="correo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contrasenia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hash" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="ClientesEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="manboss_clientes" EntityType="Self.manboss_clientes" />
@@ -50,6 +54,8 @@
           <EntitySetMapping Name="manboss_clientes">
             <EntityTypeMapping TypeName="ClientesModel.manboss_clientes">
               <MappingFragment StoreEntitySet="manboss_clientes">
+                <ScalarProperty Name="hash" ColumnName="hash" />
+                <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />

@@ -21,5 +21,7 @@ namespace Boss_Mandados.Models
         public double rating { get; set; }
         public double efectivo { get; set; }
         public int estado { get; set; }
+        public Nullable<System.DateTime> hora_inicio { get; set; }
+        public string direccion { get; set; }
     }
 }

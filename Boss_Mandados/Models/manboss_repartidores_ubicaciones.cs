@@ -12,11 +12,13 @@ namespace Boss_Mandados.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class manboss_chat_mensajes
+    public partial class manboss_repartidores_ubicaciones
     {
         public int id { get; set; }
-        public int chat { get; set; }
-        public string mensaje { get; set; }
-        public int orden { get; set; }
+        public int repartidor { get; set; }
+        public double latitud { get; set; }
+        public double longitud { get; set; }
+        public System.DateTime hora { get; set; }
+        public Nullable<int> mandado { get; set; }
     }
 }

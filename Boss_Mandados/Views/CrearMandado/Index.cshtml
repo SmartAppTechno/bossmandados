@@ -189,6 +189,7 @@
             success: function (mensaje) {
                 //console.log(mensaje);
                 $("#tabla_rutas").load(window.location + " #tabla_rutas");
+                clearInputAgregarRuta();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 //console.log(thrownError);
@@ -233,6 +234,15 @@
             }
         });
     });
+    function clearInputAgregarRuta() {
+        $('#calle').val('');
+        $('#numero').val('');
+        $('#servicio')[0].selectedIndex = 0;
+        $('#latitud').val('');
+        $('#longitud').val('');
+        $('.comentarios').val('');
+        $('#direccion').val('');
+    }
 </script>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8nWW1F1b2-oI5KXN1ito-gXtABMMthhA&libraries=places"></script>

@@ -62,7 +62,7 @@ namespace Boss_Mandados.Controllers
             foreach (var item in mensajes_db)
             {
                 Mensaje aux = new Mensaje();
-                aux.tipo = item.tipo;
+                //aux.tipo = item.tipo;
                 aux.mensaje = item.mensaje;
                 mensajes.Add(aux);
             }

@@ -22,5 +22,7 @@ namespace Boss_Mandados.Models
         public string telefono { get; set; }
         public string nombre { get; set; }
         public string correo { get; set; }
+        public string contrasenia { get; set; }
+        public string hash { get; set; }
     }
 }
