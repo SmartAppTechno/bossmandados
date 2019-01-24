@@ -61,6 +61,10 @@ namespace Boss_Mandados.Controllers
         // GET: Promociones
         public ActionResult Promociones()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Promocion> promociones = new List<Promocion>();
             if (Request.Form["fecha_inicio"] != null && Request.Form["fecha_fin"] != null)
             {
@@ -102,6 +106,10 @@ namespace Boss_Mandados.Controllers
         // GET: Repartidores
         public ActionResult Repartidores()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Repartidor> repartidores = new List<Repartidor>();
             var repartidor_db = db_repartidores.manboss_repartidores.ToList();
             double rating_total = 0;
@@ -141,6 +149,10 @@ namespace Boss_Mandados.Controllers
         // GET: Mandados
         public ActionResult Mandados()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Mandado> mandados = new List<Mandado>();
             if (Request.Form["fecha"] != null && Request.Form["estado"] != null)
             {
@@ -185,6 +197,10 @@ namespace Boss_Mandados.Controllers
         // GET: Comisiones
         public ActionResult Comisiones()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Comision> comisiones = new List<Comision>();
             double pagar = 0;
             double deben = 0;

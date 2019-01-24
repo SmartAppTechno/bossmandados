@@ -44,6 +44,10 @@ namespace Boss_Mandados.Controllers
         // GET: CrearMandado
         public ActionResult Index()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             //Repartidores
             List<Repartidor> mandaderos = new List<Repartidor>();
             var repartidores_db = db_repartidores.manboss_repartidores.ToList();
@@ -96,6 +100,10 @@ namespace Boss_Mandados.Controllers
         [HttpPost]
         public ActionResult Agregar_Ruta(string calle,int numero,int servicio, float latitud, float longitud, string comentarios)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             Ruta aux = new Ruta();
             aux.id_servicio = servicio;
             aux.servicio = db_servicios.manboss_servicios.Where(x => x.id == servicio).Select(x => x.nombre).FirstOrDefault();
@@ -114,6 +122,10 @@ namespace Boss_Mandados.Controllers
         [HttpPost]
         public ActionResult Agregar_Mandado_Nuevo(string nombre, string correo, string telefono,int mandadero)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             //Crear Cliente
             manboss_clientes nuevo_cliente = new manboss_clientes();
             nuevo_cliente.nombre = nombre;
@@ -162,6 +174,10 @@ namespace Boss_Mandados.Controllers
         [HttpPost]
         public ActionResult Agregar_Mandado_Existente(int cliente, int mandadero)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             //Crear Mandado
             manboss_mandados nuevo_mandado = new manboss_mandados();
             if (mandadero > 0)

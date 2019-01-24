@@ -37,6 +37,10 @@ namespace Boss_Mandados.Controllers
         // GET: Chat
         public ActionResult Index()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Conversacion> conversaciones = new List<Conversacion>();
             var conversacion_db = db_chat.manboss_chat.ToList();
             foreach (var chat in conversacion_db)
@@ -57,6 +61,10 @@ namespace Boss_Mandados.Controllers
         // GET: Chat/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Mensaje> mensajes = new List<Mensaje>();
             var mensajes_db = db_mensajes.manboss_chat_mensajes.Where(x => x.chat == id).ToList();
             foreach (var item in mensajes_db)

@@ -34,6 +34,10 @@ namespace Boss_Mandados.Controllers
         // GET: Repartidores
         public ActionResult Index()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Repartidor> repartidores = new List<Repartidor>();
             var rep_db = db.manboss_repartidores.ToList();
             double total = 0;
@@ -66,6 +70,10 @@ namespace Boss_Mandados.Controllers
         // GET: Repartidores/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_repartidores repartidor = db.manboss_repartidores.Find(id);
             Repartidor temporal = new Repartidor();
             manboss_usuarios user = db_usuarios.manboss_usuarios.Where(x => x.id == repartidor.repartidor).FirstOrDefault();
@@ -78,6 +86,10 @@ namespace Boss_Mandados.Controllers
         // GET: Repartidores/Create
         public ActionResult Create()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -88,6 +100,10 @@ namespace Boss_Mandados.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "efectivo")] manboss_repartidores repartidor_form)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             NameValueCollection usuario_form = Request.Form;
             string usuario = usuario_form["usuario"];
             if (db_usuarios.manboss_usuarios.Any(x => x.usuario == usuario))
@@ -127,6 +143,10 @@ namespace Boss_Mandados.Controllers
         // GET: Repartidores/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_repartidores repartidor = db.manboss_repartidores.Find(id);
             manboss_usuarios user = db_usuarios.manboss_usuarios.Where(x => x.id == repartidor.repartidor).FirstOrDefault();
             ViewBag.usuario = user;
@@ -140,6 +160,10 @@ namespace Boss_Mandados.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,repartidor,efectivo")] manboss_repartidores repartidor_form)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             //Guardar usuario
             NameValueCollection usuario_form = Request.Form;
             var usuario_actual = db_usuarios.manboss_usuarios.FirstOrDefault(x => x.id == repartidor_form.repartidor);
@@ -181,6 +205,10 @@ namespace Boss_Mandados.Controllers
 
         public ActionResult Mandados(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Mandado_object> mandados = new List<Mandado_object>();
             var mandados_db = db_mandados.manboss_mandados.Where(x => x.repartidor == id).ToList();
             foreach (var mandado in mandados_db)
@@ -201,6 +229,10 @@ namespace Boss_Mandados.Controllers
 
         public ActionResult Mandado(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Mandado_detalle> mandados = new List<Mandado_detalle>();
             var mandados_db = db_mandados_rutas.manboss_mandados_rutas.Where(x => x.mandado == id).ToList();
             foreach (var mandado in mandados_db)
@@ -227,6 +259,10 @@ namespace Boss_Mandados.Controllers
 
         public ActionResult Comisiones(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Comision> comisiones = new List<Comision>();
             var comisiones_db = db_comisiones.manboss_comisiones.Where(x => x.repartidor == id).ToList();
             foreach (var com in comisiones_db)

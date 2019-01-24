@@ -11,12 +11,20 @@ namespace Boss_Mandados.Controllers
         // GET: Servicios
         public ActionResult Index()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.manboss_servicios.ToList());
         }
 
         // GET: Servicios/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_servicios manboss_servicios = db.manboss_servicios.Find(id);
             return View(manboss_servicios);
         }
@@ -24,6 +32,10 @@ namespace Boss_Mandados.Controllers
         // GET: Servicios/Create
         public ActionResult Create()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -34,6 +46,10 @@ namespace Boss_Mandados.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,nombre,tarifa_base_ex,costo_minuto_ex,costo_km_ex,tarifa_base_co,costo_minuto_co,costo_km_co,foto")] manboss_servicios manboss_form)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             db.manboss_servicios.Add(manboss_form);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -42,6 +58,10 @@ namespace Boss_Mandados.Controllers
         // GET: Servicios/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_servicios manboss_servicios = db.manboss_servicios.Find(id);
             return View(manboss_servicios);
         }
@@ -53,6 +73,10 @@ namespace Boss_Mandados.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,nombre,tarifa_base_ex,costo_minuto_ex,costo_km_ex,tarifa_base_co,costo_minuto_co,costo_km_co,foto")] manboss_servicios servicio_form)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var servicio_actual = db.manboss_servicios.FirstOrDefault(x => x.id == servicio_form.id);
             servicio_actual.nombre = servicio_form.nombre;
             servicio_actual.tarifa_base_ex = servicio_form.tarifa_base_ex;
@@ -72,6 +96,10 @@ namespace Boss_Mandados.Controllers
         // GET: Servicios/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_servicios manboss_servicios = db.manboss_servicios.Find(id);
             return View(manboss_servicios);
         }
@@ -81,6 +109,10 @@ namespace Boss_Mandados.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_servicios manboss_servicios = db.manboss_servicios.Find(id);
             db.manboss_servicios.Remove(manboss_servicios);
             db.SaveChanges();

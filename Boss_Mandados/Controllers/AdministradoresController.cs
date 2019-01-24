@@ -16,12 +16,20 @@ namespace Boss_Mandados
         // GET: Administradores
         public ActionResult Index()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.manboss_usuarios.Where(x=> x.rol == 1).ToList());
         }
 
         // GET: Administradores/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_usuarios manboss_model = db.manboss_usuarios.Find(id);
             MenuEntities db_menu = new MenuEntities();
             ViewBag.menus = db_menu.manboss_permisos_menu.ToList();
@@ -34,6 +42,10 @@ namespace Boss_Mandados
         // GET: Administradores/Create
         public ActionResult Create()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             MenuEntities db_menu = new MenuEntities();
             ViewBag.menus = db_menu.manboss_permisos_menu.ToList();
             return View();
@@ -46,6 +58,10 @@ namespace Boss_Mandados
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,nombre,correo,usuario,contrasenia")] manboss_usuarios usuario_form)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (db.manboss_usuarios.Any(x => x.usuario == usuario_form.usuario))
             {
                 ViewBag.Message = "El usuario ya existe";
@@ -98,6 +114,10 @@ namespace Boss_Mandados
         // GET: Administradores/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_usuarios manboss_model = db.manboss_usuarios.Find(id);
             MenuEntities db_menu = new MenuEntities();
             ViewBag.menus = db_menu.manboss_permisos_menu.ToList();
@@ -114,6 +134,10 @@ namespace Boss_Mandados
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,nombre,correo,usuario,contrasenia")] manboss_usuarios usuario_form)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var usuario_actual = db.manboss_usuarios.FirstOrDefault(x => x.id == usuario_form.id);
             usuario_actual.nombre = usuario_form.nombre;
             usuario_actual.correo = usuario_form.correo;

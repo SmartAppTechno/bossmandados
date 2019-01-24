@@ -54,6 +54,9 @@ namespace Boss_Mandados.Controllers
         // GET: Mandados
         public ActionResult Index()
         {
+            if (Session["nombre_usuario"] == null){
+                return RedirectToAction("Index", "Login");
+            }
             //En Espera
             List<Mandado> espera = new List<Mandado>();
             var espera_db = db_mandados.manboss_mandados.Where(x => x.estado == 1).ToList();
@@ -163,6 +166,10 @@ namespace Boss_Mandados.Controllers
         [HttpPost]
         public ActionResult Mandado_Ruta(int repartidor_id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             //En Espera
             List<Mandado> espera = new List<Mandado>();
             var espera_db = db_mandados.manboss_mandados.Where(x => x.estado == 1).ToList();

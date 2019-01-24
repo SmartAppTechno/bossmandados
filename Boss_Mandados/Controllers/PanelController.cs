@@ -13,6 +13,10 @@ namespace Boss_Mandados.Controllers
         // GET: Panel
         public ActionResult Index()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             ClientesEntities db_clientes = new ClientesEntities();
             ServiciosEntities db_servicios = new ServiciosEntities();
             RepartidoresEntities db_repartidores = new RepartidoresEntities();

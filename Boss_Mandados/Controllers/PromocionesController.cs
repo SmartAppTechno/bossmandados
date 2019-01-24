@@ -17,12 +17,20 @@ namespace Boss_Mandados.Controllers
         // GET: Promociones
         public ActionResult Index()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.manboss_promociones.ToList());
         }
 
         // GET: Promociones/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_promociones manboss_promociones = db.manboss_promociones.Find(id);
             return View(manboss_promociones);
         }
@@ -30,6 +38,10 @@ namespace Boss_Mandados.Controllers
         // GET: Promociones/Create
         public ActionResult Create()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -40,6 +52,10 @@ namespace Boss_Mandados.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,nombre,descripcion,descuento,cupon,fecha_inicio,fecha_fin")] manboss_promociones manboss_promociones)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             db.manboss_promociones.Add(manboss_promociones);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -48,6 +64,10 @@ namespace Boss_Mandados.Controllers
         // GET: Promociones/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_promociones manboss_promociones = db.manboss_promociones.Find(id);
             return View(manboss_promociones);
         }
@@ -59,6 +79,10 @@ namespace Boss_Mandados.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,nombre,descripcion,descuento,cupon,fecha_inicio,fecha_fin")] manboss_promociones manboss_promociones)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             db.Entry(manboss_promociones).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -67,6 +91,10 @@ namespace Boss_Mandados.Controllers
         // GET: Promociones/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_promociones manboss_promociones = db.manboss_promociones.Find(id);
             return View(manboss_promociones);
         }
@@ -76,6 +104,10 @@ namespace Boss_Mandados.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_promociones manboss_promociones = db.manboss_promociones.Find(id);
             db.manboss_promociones.Remove(manboss_promociones);
             db.SaveChanges();

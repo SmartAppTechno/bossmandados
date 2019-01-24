@@ -888,6 +888,7 @@
     <Content Include="Views\CrearMandado\Index.cshtml" />
     <Content Include="Views\Mandados\Mandado_Ruta.cshtml" />
     <None Include="Properties\PublishProfiles\BossMandados20180313051450 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

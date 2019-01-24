@@ -37,24 +37,40 @@ namespace Boss_Mandados.Controllers
         // GET: Clientes
         public ActionResult Index()
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.manboss_clientes.ToList());
         }
 
         // GET: Clientes/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             manboss_clientes cliente = db.manboss_clientes.Find(id);
             return View(cliente);
         }
 
         public ActionResult Direcciones(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             ViewBag.direcciones = db_direcciones.manboss_clientes_direcciones.Where(x => x.cliente == id).ToList();
             return View();
         }
 
         public ActionResult Mandados(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Mandado_object> mandados = new List<Mandado_object>();
             var mandados_db = db_mandados.manboss_mandados.Where(x => x.cliente == id).ToList();
             foreach(var mandado in mandados_db)
@@ -72,6 +88,10 @@ namespace Boss_Mandados.Controllers
         }
         public ActionResult Mandado(int? id)
         {
+            if (Session["nombre_usuario"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             List<Mandado_detalle> mandados = new List<Mandado_detalle>();
             var mandados_db = db_mandados_rutas.manboss_mandados_rutas.Where(x => x.mandado == id).ToList();
             foreach (var mandado in mandados_db)
